@@ -1,4 +1,5 @@
 ## 🌶PG节奏熊猫：接口
+![20240329161455](https://github.com/alantang1977/pg/assets/107459091/27f521bb-6e87-447b-acbb-a97cf097b8dd)
 
 :star:把zip文件解壓縮到安卓設備的/sdcard/tvbox/JS/目錄<br>
 複製lib/tokentemplate.json成爲lib/tokenm.json，并填寫必要的内容<br>
