@@ -1,6 +1,26 @@
 {
 	"spider":"./pg.jar",
 	"sites":[
+		
+		{
+			"key": "豆瓣",
+			"name": "豆瓣",
+			"type": 3,
+			"api": "csp_Douban",
+			"searchable": 0,
+			"changeable": 1,
+			"indexs":1,
+			"ext": "./lib/douban.json"
+		},
+		{
+			"key": "网盘配置",
+			"name": "网盘及彈幕配置",
+			"type": 3,
+			"api": "csp_Config",
+			"searchable": 0,
+			"changeable": 0,
+			"ext":"./lib/tokenm.json"
+		},
 		{
       "key": "毒舌影视","name":"🔴毒舌影视|短剧","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"jar":"https://940740.xyz/github.com/gaotianliuyun/gao/blob/master/jar/XBPQ.jar",
       "ext": {
@@ -21,25 +41,6 @@
         "分类": "电影$1#连续剧$2#动漫$3#综艺$4#短剧$6"
       }
     },
-		{
-			"key": "豆瓣",
-			"name": "豆瓣",
-			"type": 3,
-			"api": "csp_Douban",
-			"searchable": 0,
-			"changeable": 1,
-			"indexs":1,
-			"ext": "./lib/douban.json"
-		},
-		{
-			"key": "网盘配置",
-			"name": "网盘及彈幕配置",
-			"type": 3,
-			"api": "csp_Config",
-			"searchable": 0,
-			"changeable": 0,
-			"ext":"./lib/tokenm.json"
-		},
 		{"key":"Local","name":"本地","type":3,"api":"csp_Local"},
 		{"key":"PushShare","name":"我的资源分享","type":3, "api":"csp_PushShare","searchable":1,"quickSearch":1, "changeable":1, "filterable":0, "timeout":60, "ext":"./lib/tokenm.json$$$./lib/pushshare.txt$$$db$$$1",
 			"style": {
