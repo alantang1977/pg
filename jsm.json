@@ -2,6 +2,26 @@
 	"spider":"./pg.jar",
 	"sites":[
 		{
+      "key": "毒舌影视","name":"🔴毒舌影视|短剧","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"jar":"https://940740.xyz/github.com/gaotianliuyun/gao/blob/master/jar/XBPQ.jar",
+      "ext": {
+        "数组":"module-item&&</a>",
+        "副标题":"v-item-bottom\">&&</div>",
+        "图片": "https+://vres.a357899.cn+data-original=\"&&\"",
+        "导演": "导演:&&",
+        "演员": "演员:</div>&&</div>[替换:/>>空]",
+        "影片年代": "首映:</div>&&</div>",
+        "简介": "class=\"detail-desc\">&&</p>",
+        "线路数组":"source-item\">&&</a>[排序:蓝光>超清]",
+        "线路标题":"<span class=\"source-item-label\">&&</span>+-+source-item-num\">&&</i>[替换:线路>>空]",
+        "搜索url": "https://www.dushe7.app/search?k={wd}&page={pg}",
+        "地区":"[替换:大陆>>中国大陆#香港>>中国香港#台湾>>中国台湾]",
+        "剧情":"[替换:伦理>>NETFLIX]",
+        "排序":"综合$1#最新$2#最热$3#评分$4",
+        "分类url": "https://www.dushe7.app/show/{cateId}-{class}-{area}--{year}-{by}-{catePg}.html",
+        "分类": "电影$1#连续剧$2#动漫$3#综艺$4#短剧$6"
+      }
+    },
+		{
 			"key": "豆瓣",
 			"name": "豆瓣",
 			"type": 3,
