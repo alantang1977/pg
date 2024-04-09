@@ -52,4 +52,7 @@
 "pikpak_proxy_onlyapi":false<br>
 }
 
+
+![photo_2024-04-09_06-39-11](https://github.com/alantang1977/pg/assets/107459091/738ccf7a-9900-44f1-8bbc-2dfb8acff704)
+
 [回到顶部](#readme)
