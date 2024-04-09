@@ -691,7 +691,7 @@
 			{
 				"name": "国际直播",
 				"type": 0,
-				"url": "https://www.stream-link.org/stream-link.m3u",
+				"url": "https://www.stream-link.org/",
 				"playerType": 1,
 				"ua": "okhttp/3.15",
 				"epg": "http://127.0.0.1:10079/p/0/proxy/http://epg.112114.xyz/?ch={name}&date={date}",
