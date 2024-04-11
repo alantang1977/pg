@@ -691,7 +691,7 @@
 			{
 				"name": "live.ipv6.m3u",
 				"type": 0,
-				"url": "http://127.0.0.1:10079/p/0/proxy/https://live.fanmingming.com/tv/m3u/ipv6.m3u",
+				"url": "https://githubfd.deno.dev/qist/tvbox/master/tvboxtv.txt",
 				"playerType": 1,
 				"ua": "okhttp/3.15",
 				"epg": "http://127.0.0.1:10079/p/0/proxy/http://epg.112114.xyz/?ch={name}&date={date}",
