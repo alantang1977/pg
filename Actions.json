@@ -436,7 +436,7 @@
     
     {"key":"Miss","name":"Miss|fq","type":3,"api":"csp_Miss"},
     {"key":"Cable","name":"Cable|fq","type":3,"api":"csp_Cable"},
-    {"key":"Doll","name":"Doll|fq","type":3,"api":"csp_Doll"},
+    {"key":"Doll","name":"🔞Doll|fq","type":3,"api":"csp_Doll","ext":"127.0.0.1:7891"},
     {"key":"top888","name":"top888|fq","type":3,"api":"csp_Top888","style":{"type":"rect","ratio":1.6}},
     {"key":"SeHuaTang","name":"SeHuaTang|fq","type":3,"api":"csp_SeHuaTang"},
     {"key":"Jable","name":"Jable|fq","type":3,"api":"csp_Jable"},
