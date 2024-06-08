@@ -1,5 +1,6 @@
 ## 🌶PG节奏熊猫：接口
-![photo_2024-06-08_22-51-32](https://github.com/alantang1977/pg/assets/107459091/47a8607b-47cc-456e-a6bd-03a9d53ea07c)
+
+![photo_2024-05-29_20-53-25](https://github.com/alantang1977/pg/assets/107459091/7520d9d9-e4ba-472a-8a73-21fd5ad693e5)
 
 ![IMG_0113](https://github.com/alantang1977/pg/assets/107459091/a69f166c-07c8-4159-b442-bcf93983938c)
 
