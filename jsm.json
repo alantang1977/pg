@@ -2,23 +2,6 @@
 	"spider":"./pg.jar",
 	"sites":[
 		{
-             "key": "Youtube",
-      "name": "Youtube",
-      "type": 3,
-      "api": "csp_Youtube",
-      "searchable": 1,
-      "quickSearch": 1,
-      "changeable": 0,
-      "ext": {
-        "type": "飢餓遊戲完整版#綜藝玩很大 全集#奔跑吧兄弟加长版full#露营#音乐#免费推荐#女团#日本整人综艺#猜歌王",
-        "proxy": "192.168.1.16:2080"
-      },
-      "style": {
-        "type": "rect",
-        "ratio": 1.5
-            }
-        },
-		{
 			"key": "豆瓣",
 			"name": "豆瓣",
 			"type": 3,
@@ -101,7 +84,7 @@
 		},
 		{
 			"key":"Youtube",
-			"name":"Youtube",
+			"name":"⭕️Youtube⭕️",
 			"type":3,
 			"api": "csp_Youtube",
 			"searchable": 1,
