@@ -2,6 +2,23 @@
 	"spider":"./pg.jar",
 	"sites":[
 		{
+            "key": "Youtube",
+            "name": "⭕️Youtube",
+            "type": 3,
+            "api": "csp_Youtube",
+            "searchable": 1,
+            "quickSearch": 0,
+            "changeable": 0,
+            "ext": {
+                "type": "推荐#首页#电影#电视剧#新闻#直播#游戏短剧#音乐#体育#课程",
+                "proxy": "127.0.0.1:10075"
+            },
+            "style": {
+                "type": "rect",
+                "ratio": 1.5
+            }
+        },
+		{
 			"key": "豆瓣",
 			"name": "豆瓣",
 			"type": 3,
