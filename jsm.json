@@ -84,14 +84,15 @@
 		},
 		{
 			"key":"Youtube",
-			"name":"⭕️Youtube⭕️",
+			"name":"Youtube",
 			"type":3,
 			"api": "csp_Youtube",
 			"searchable": 1,
 			"quickSearch": 0,
 			"changeable": 0,
 			"ext":{
-				"type":"直播#新闻#剧集#电影#综艺#纪录片#音乐#体育#动物#风光#放松#4K#HDR#movie#music#documentary",
+				"json":"./lib/youtube.json",
+				"type":"直播#新闻#剧集#电影#综艺#纪录片#音乐#体育#动物#风光#放松#4K#HDR#movie#music#documentary#bbc documentary#national geographic documentary",
 				"proxy":"proxy",
 				"codecs":""
 			},
