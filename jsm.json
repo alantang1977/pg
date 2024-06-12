@@ -800,9 +800,9 @@
 				"logo": "http://127.0.0.1:10079/p/0/proxy/https://epg.112114.xyz/logo/{name}.png"
 			},
 			{
-				"name": "live.ipv6.local",
+				"name": "国内直播",
 				"type": 0,
-				"url": "./lib/live.ipv6.txt",
+				"url": "https://gh.con.sh/https://github.com/jadehh/TV/releases/download/v1.0.1/live_plus.txt",
 				"playerType": 1,
 				"ua": "okhttp/3.15",
 				"epg": "http://127.0.0.1:10079/p/0/proxy/http://epg.112114.xyz/?ch={name}&date={date}",
