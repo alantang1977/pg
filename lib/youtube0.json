@@ -5,6 +5,10 @@
 			"type_name":"YouTube(頻道)"
 		},
 		{
+			"type_id":"YouTube 新聞 Live",
+			"type_name":"新聞直播"
+		},
+		{
 			"type_id":"LIST:Full YouTube 動畫片",
 			"type_name":"動畫片"
 		},
@@ -13,8 +17,16 @@
 			"type_name":"多媒體中心"
 		},
 		{
-			"type_id":"YouTube 新聞 Live",
-			"type_name":"新聞直播"
+			"type_id":"YouTube 電影",
+			"type_name":"電影"
+		},
+		{
+			"type_id":"YouTube 劇集",
+			"type_name":"劇集"
+		},
+		{
+			"type_id":"YouTube 短劇",
+			"type_name":"短劇"
 		},
 		{
 			"type_id":"LIST:Full YouTube 綜藝",
