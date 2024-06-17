@@ -795,9 +795,9 @@
 		}],
 		"lives":[
 			{
-				"name": "live.ipv6",
+				"name": "电视直播live",
 				"type": 0,
-				"url": "http://127.0.0.1:10079/p/0/proxy/https://fanmingming.com/txt?url=https://live.fanmingming.com/tv/m3u/ipv6.m3u",
+				"url": "https://wzsvip.github.io/ipv4.m3u",
 				"playerType": 1,
 				"ua": "okhttp/3.15",
 				"epg": "http://127.0.0.1:10079/p/0/proxy/http://epg.112114.xyz/?ch={name}&date={date}",
