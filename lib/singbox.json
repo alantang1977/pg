@@ -1,222 +1,5086 @@
 {
-  "log": {
-    "level": "info",
-    "timestamp": true
-  },
-  "dns": {
-    "servers": [
-      {
-        "tag": "remote",
-        "address": "https://8.8.8.8/dns-query",
-        "detour": "select"
-      },
-      {
-        "tag": "local",
-        "address": "https://223.5.5.5/dns-query",
-        "detour": "direct"
-      },
-      {
-        "tag": "block",
-        "address": "rcode://success"
-      },
-      {
-        "tag": "fakeip",
-        "address": "fakeip"
-      }
+    "dns": {
+        "fakeip": {
+            "enabled": true,
+            "inet4_range": "198.18.0.0/15",
+            "inet6_range": "fc00::/18"
+        },
+        "independent_cache": true,
+        "rules": [
+            {
+                "outbound": "any",
+                "server": "local"
+            },
+            {
+                "disable_cache": true,
+                "geosite": "category-ads-all",
+                "server": "block"
+            },
+            {
+                "query_type": [
+                    "A",
+                    "AAAA"
+                ],
+                "rewrite_ttl": 1,
+                "server": "fakeip"
+            },
+            {
+                "clash_mode": "Global",
+                "server": "remote"
+            },
+            {
+                "clash_mode": "Direct",
+                "server": "local"
+            },
+            {
+                "rule_set": "geosite-geolocation-cn",
+                "server": "local"
+            },
+            {
+                "clash_mode": "Default",
+                "server": "remote"
+            },
+            {
+                "mode": "and",
+                "rules": [
+                    {
+                        "invert": true,
+                        "rule_set": "geosite-geolocation-!cn"
+                    },
+                    {
+                        "rule_set": "geoip-cn"
+                    }
+                ],
+                "server": "local",
+                "type": "logical"
+            }
+        ],
+        "servers": [
+            {
+                "address": "https://8.8.8.8/dns-query",
+                "detour": "select",
+                "tag": "remote"
+            },
+            {
+                "address": "https://223.5.5.5/dns-query",
+                "detour": "direct",
+                "tag": "local"
+            },
+            {
+                "address": "rcode://success",
+                "tag": "block"
+            },
+            {
+                "address": "fakeip",
+                "tag": "fakeip"
+            }
+        ],
+        "strategy": "prefer_ipv4"
+    },
+    "experimental": {
+        "cache_file": {
+            "enabled": true,
+            "store_rdrc": true
+        },
+        "clash_api": {
+            "default_mode": "Enhanced",
+            "external_controller": "127.0.0.1:19090"
+        }
+    },
+    "inbounds": [
+        {
+            "domain_strategy": "prefer_ipv4",
+            "listen": "0.0.0.0",
+            "listen_port": 10173,
+            "sniff": true,
+            "sniff_override_destination": false,
+            "tag": "socks-in",
+            "type": "socks"
+        },
+        {
+            "domain_strategy": "prefer_ipv4",
+            "listen": "0.0.0.0",
+            "listen_port": 10172,
+            "set_system_proxy": false,
+            "sniff": true,
+            "sniff_override_destination": false,
+            "tag": "mixed-in",
+            "type": "mixed"
+        }
     ],
-    "rules": [
-      {
-        "outbound": "any",
-        "server": "local"
-      },
-      {
-        "geosite": "category-ads-all",
-        "server": "block",
-        "disable_cache": true
-      },
-      {
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "server": "fakeip",
-        "rewrite_ttl": 1
-      },
-      {
-        "clash_mode": "Global",
-        "server": "remote"
-      },
-      {
-        "clash_mode": "Direct",
-        "server": "local"
-      },
-      {
-        "rule_set": "geosite-geolocation-cn",
-        "server": "local"
-      },
-      {
-        "clash_mode": "Default",
-        "server": "remote"
-      },
-      {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "rule_set": "geosite-geolocation-!cn",
-            "invert": true
-          },
-          {
-            "rule_set": "geoip-cn"
-          }
-        ],
-        "server": "local"
-      }
+    "log": {
+        "level": "info",
+        "timestamp": true
+    },
+    "outbounds": [
+        {
+            "tag": "select",
+            "type": "selector",
+            "default": "urltest",
+            "outbounds": [
+                "urltest",
+                "🇨🇳TW_0 @WangCai_8",
+                "🇨🇳TW_1 @WangCai_8",
+                "🇨🇳TW_2 @WangCai_8",
+                "🇨🇳TW_3 @WangCai_8",
+                "🇨🇳TW_4 @WangCai_8",
+                "🇨🇳TW_5 @WangCai_8",
+                "🇨🇳TW_6 @WangCai_8",
+                "🇨🇳TW_7 @WangCai_8",
+                "🇨🇳TW_8 @WangCai_8",
+                "🇨🇳TW_9 @WangCai_8",
+                "🇨🇳TW_10 @WangCai_8",
+                "🇨🇳TW_11 @WangCai_8",
+                "🇨🇳TW_12 @WangCai_8",
+                "🇨🇳TW_13 @WangCai_8",
+                "🇨🇳TW_14 @WangCai_8",
+                "🇨🇳TW_15 @WangCai_8",
+                "🇨🇳TW_16 @WangCai_8",
+                "🇨🇳TW_17 @WangCai_8",
+                "🇨🇳TW_18 @WangCai_8",
+                "🇨🇳TW_19 @WangCai_8",
+                "🇨🇳TW_20 @WangCai_8",
+                "🇨🇳TW_21 @WangCai_8",
+                "🇨🇳TW_22 @WangCai_8",
+                "🇨🇳TW_23 @WangCai_8",
+                "🇨🇳TW_24 @WangCai_8",
+                "🇨🇳TW_25 @WangCai_8",
+                "🇨🇳TW_26 @WangCai_8",
+                "🇨🇳TW_27 @WangCai_8",
+                "🇨🇳TW_28 @WangCai_8",
+                "🇨🇳TW_29 @WangCai_8",
+                "🇨🇳TW_30 @WangCai_8",
+                "🇨🇳TW_31 @WangCai_8",
+                "🇨🇳TW_32 @WangCai_8",
+                "🇨🇳TW_33 @WangCai_8",
+                "🇨🇳TW_34 @WangCai_8",
+                "🇨🇳TW_35 @WangCai_8",
+                "🇨🇳TW_36 @WangCai_8",
+                "🇨🇳TW_37 @WangCai_8",
+                "🇨🇳TW_38 @WangCai_8",
+                "🇨🇳TW_39 @WangCai_8",
+                "🇨🇳TW_40 @WangCai_8",
+                "🇨🇳TW_41 @WangCai_8",
+                "🇨🇳TW_42 @WangCai_8",
+                "🇨🇳TW_43 @WangCai_8",
+                "🇨🇳TW_44 @WangCai_8",
+                "🇨🇳TW_45 @WangCai_8",
+                "🇨🇳TW_46 @WangCai_8",
+                "🇨🇳TW_47 @WangCai_8",
+                "🇨🇳TW_48 @WangCai_8",
+                "🇨🇳TW_49 @WangCai_8",
+                "🇨🇳TW_50 @WangCai_8",
+                "🇨🇳TW_51 @WangCai_8",
+                "🇨🇳TW_52 @WangCai_8",
+                "🇨🇳TW_53 @WangCai_8",
+                "🇨🇳TW_54 @WangCai_8",
+                "🇨🇳TW_55 @WangCai_8",
+                "🇨🇳TW_56 @WangCai_8",
+                "🇨🇳TW_57 @WangCai_8",
+                "🇨🇳TW_58 @WangCai_8",
+                "🇨🇳TW_59 @WangCai_8",
+                "🇨🇳TW_60 @WangCai_8",
+                "🇨🇳TW_61 @WangCai_8",
+                "🇨🇳TW_62 @WangCai_8",
+                "🇨🇳TW_63 @WangCai_8",
+                "🇨🇳TW_64 @WangCai_8",
+                "🇨🇳TW_65 @WangCai_8",
+                "🇨🇳TW_66 @WangCai_8",
+                "🇨🇳TW_67 @WangCai_8",
+                "🇨🇳TW_68 @WangCai_8",
+                "🇨🇳TW_69 @WangCai_8",
+                "🇨🇳TW_70 @WangCai_8",
+                "🇨🇳TW_71 @WangCai_8",
+                "🇨🇳TW_72 @WangCai_8",
+                "🇨🇳TW_73 @WangCai_8",
+                "🇨🇳TW_74 @WangCai_8",
+                "🇨🇳TW_75 @WangCai_8",
+                "🇨🇳TW_76 @WangCai_8",
+                "🇨🇳TW_77 @WangCai_8",
+                "🇨🇳TW_78 @WangCai_8",
+                "🇨🇳TW_79 @WangCai_8",
+                "🇨🇳TW_80 @WangCai_8",
+                "🇨🇳TW_81 @WangCai_8",
+                "🇨🇳TW_82 @WangCai_8",
+                "🇨🇳TW_83 @WangCai_8",
+                "🇨🇳TW_84 @WangCai_8",
+                "🇨🇳TW_85 @WangCai_8",
+                "🇨🇳TW_86 @WangCai_8",
+                "🇨🇳TW_87 @WangCai_8",
+                "🇨🇳TW_88 @WangCai_8",
+                "🇨🇳TW_89 @WangCai_8",
+                "🇨🇳TW_90 @WangCai_8",
+                "🇨🇳TW_91 @WangCai_8",
+                "🇨🇳TW_92 @WangCai_8",
+                "🇨🇳TW_93 @WangCai_8",
+                "🇨🇳TW_94 @WangCai_8",
+                "🇨🇳TW_95 @WangCai_8",
+                "🇨🇳TW_96 @WangCai_8",
+                "🇨🇳TW_97 @WangCai_8",
+                "🇨🇳TW_98 @WangCai_8",
+                "🇨🇳TW_99 @WangCai_8",
+                "🇨🇳TW_100 @WangCai_8",
+                "🇨🇳TW_101 @WangCai_8",
+                "🇨🇳TW_102 @WangCai_8",
+                "🇨🇳TW_103 @WangCai_8",
+                "🇨🇳TW_104 @WangCai_8",
+                "🇨🇳TW_105 @WangCai_8",
+                "🇨🇳TW_106 @WangCai_8",
+                "🇨🇳TW_107 @WangCai_8",
+                "🇨🇳TW_108 @WangCai_8",
+                "🇨🇳TW_109 @WangCai_8",
+                "🇨🇳TW_110 @WangCai_8",
+                "🇨🇳TW_111 @WangCai_8",
+                "🇨🇳TW_112 @WangCai_8",
+                "🇨🇳TW_113 @WangCai_8",
+                "🇨🇳TW_114 @WangCai_8",
+                "🇨🇳TW_115 @WangCai_8",
+                "🇨🇳TW_116 @WangCai_8",
+                "🇨🇳TW_117 @WangCai_8",
+                "🇨🇳TW_118 @WangCai_8",
+                "🇨🇳TW_119 @WangCai_8",
+                "🇨🇳TW_120 @WangCai_8",
+                "🇨🇳TW_121 @WangCai_8",
+                "🇨🇳TW_122 @WangCai_8",
+                "🇨🇳TW_123 @WangCai_8",
+                "🇨🇳TW_124 @WangCai_8",
+                "🇨🇳TW_125 @WangCai_8",
+                "🇨🇳TW_126 @WangCai_8",
+                "🇨🇳TW_127 @WangCai_8",
+                "🇨🇳TW_128 @WangCai_8",
+                "🇨🇳TW_129 @WangCai_8",
+                "🇨🇳TW_130 @WangCai_8",
+                "🇨🇳TW_131 @WangCai_8",
+                "🇨🇳TW_132 @WangCai_8",
+                "🇨🇳TW_133 @WangCai_8",
+                "🇨🇳TW_134 @WangCai_8",
+                "🇨🇳TW_135 @WangCai_8",
+                "🇨🇳TW_136 @WangCai_8",
+                "🇨🇳TW_137 @WangCai_8",
+                "🇨🇳TW_138 @WangCai_8",
+                "🇨🇳TW_139 @WangCai_8",
+                "🇨🇳TW_140 @WangCai_8",
+                "🇨🇳TW_141 @WangCai_8",
+                "🇨🇳TW_142 @WangCai_8",
+                "🇨🇳TW_143 @WangCai_8",
+                "🇨🇳TW_144 @WangCai_8",
+                "🇨🇳TW_145 @WangCai_8",
+                "🇨🇳TW_146 @WangCai_8",
+                "🇨🇳TW_147 @WangCai_8",
+                "🇨🇳TW_148 @WangCai_8",
+                "🇨🇳TW_149 @WangCai_8",
+                "🇨🇳TW_150 @WangCai_8",
+                "🇨🇳TW_151 @WangCai_8",
+                "🇨🇳TW_152 @WangCai_8",
+                "🇨🇳TW_153 @WangCai_8",
+                "🇨🇳TW_154 @WangCai_8",
+                "🇨🇳TW_155 @WangCai_8",
+                "🇨🇳TW_156 @WangCai_8",
+                "🇨🇳TW_157 @WangCai_8",
+                "🇨🇳TW_158 @WangCai_8",
+                "🇨🇳TW_159 @WangCai_8",
+                "🇨🇳TW_160 @WangCai_8",
+                "🇨🇳TW_161 @WangCai_8",
+                "🇨🇳TW_162 @WangCai_8",
+                "🇨🇳TW_163 @WangCai_8",
+                "🇨🇳TW_164 @WangCai_8",
+                "🇨🇳TW_165 @WangCai_8",
+                "🇨🇳TW_166 @WangCai_8",
+                "🇨🇳TW_167 @WangCai_8",
+                "🇨🇳TW_168 @WangCai_8",
+                "🇨🇳TW_169 @WangCai_8",
+                "🇨🇳TW_170 @WangCai_8",
+                "🇨🇳TW_171 @WangCai_8",
+                "🇨🇳TW_172 @WangCai_8",
+                "🇨🇳TW_173 @WangCai_8",
+                "🇨🇳TW_174 @WangCai_8",
+                "🇨🇳TW_175 @WangCai_8",
+                "🇨🇳TW_176 @WangCai_8",
+                "🇨🇳TW_177 @WangCai_8",
+                "🇨🇳TW_178 @WangCai_8",
+                "🇨🇳TW_179 @WangCai_8",
+                "🇨🇳TW_180 @WangCai_8",
+                "🇨🇳TW_181 @WangCai_8",
+                "🇨🇳TW_182 @WangCai_8",
+                "🇨🇳TW_183 @WangCai_8",
+                "🇨🇳TW_184 @WangCai_8",
+                "🇨🇳TW_185 @WangCai_8",
+                "🇨🇳TW_186 @WangCai_8",
+                "🇨🇳TW_187 @WangCai_8",
+                "🇨🇳TW_188 @WangCai_8",
+                "🇨🇳TW_189 @WangCai_8",
+                "🇨🇳TW_190 @WangCai_8",
+                "🇨🇳TW_191 @WangCai_8",
+                "🇨🇳TW_192 @WangCai_8",
+                "🇨🇳TW_193 @WangCai_8",
+                "🇨🇳TW_194 @WangCai_8",
+                "🇨🇳TW_195 @WangCai_8",
+                "🇨🇳TW_196 @WangCai_8",
+                "🇨🇳TW_197 @WangCai_8",
+                "🇨🇳TW_198 @WangCai_8",
+                "🇨🇳TW_199 @WangCai_8",
+                "🇨🇳TW_200 @WangCai_8",
+                "🇨🇳TW_201 @WangCai_8",
+                "🇨🇳TW_202 @WangCai_8",
+                "🇨🇳TW_203 @WangCai_8",
+                "🇨🇳TW_204 @WangCai_8",
+                "🇨🇳TW_205 @WangCai_8",
+                "🇨🇳TW_206 @WangCai_8",
+                "🇨🇳TW_207 @WangCai_8",
+                "🇨🇳TW_208 @WangCai_8",
+                "🇨🇳TW_209 @WangCai_8",
+                "🇨🇳TW_210 @WangCai_8",
+                "🇨🇳TW_211 @WangCai_8",
+                "🇨🇳TW_212 @WangCai_8",
+                "🇨🇳TW_213 @WangCai_8",
+                "🇨🇳TW_214 @WangCai_8",
+                "🇨🇳TW_215 @WangCai_8",
+                "🇨🇳TW_216 @WangCai_8",
+                "🇨🇳TW_217 @WangCai_8",
+                "🇨🇳TW_218 @WangCai_8",
+                "🇨🇳TW_219 @WangCai_8",
+                "🇨🇳TW_220 @WangCai_8",
+                "🇨🇳TW_221 @WangCai_8",
+                "🇨🇳TW_222 @WangCai_8",
+                "🇨🇳TW_223 @WangCai_8",
+                "🇨🇳TW_224 @WangCai_8",
+                "🇨🇳TW_225 @WangCai_8",
+                "🇨🇳TW_226 @WangCai_8",
+                "🇨🇳TW_227 @WangCai_8",
+                "🇨🇳TW_228 @WangCai_8",
+                "🇨🇳TW_229 @WangCai_8",
+                "🇨🇳TW_230 @WangCai_8",
+                "🇨🇳TW_231 @WangCai_8",
+                "🇨🇳TW_232 @WangCai_8",
+                "🇨🇳TW_233 @WangCai_8",
+                "🇨🇳TW_234 @WangCai_8",
+                "🇨🇳TW_235 @WangCai_8",
+                "🇨🇳TW_236 @WangCai_8",
+                "🇨🇳TW_237 @WangCai_8",
+                "🇨🇳TW_238 @WangCai_8",
+                "🇨🇳TW_239 @WangCai_8",
+                "🇨🇳TW_240 @WangCai_8",
+                "🇨🇳TW_241 @WangCai_8",
+                "🇨🇳TW_242 @WangCai_8",
+                "🇨🇳TW_243 @WangCai_8",
+                "🇨🇳TW_244 @WangCai_8",
+                "🇨🇳TW_245 @WangCai_8",
+                "🇨🇳TW_246 @WangCai_8",
+                "🇨🇳TW_247 @WangCai_8",
+                "🇨🇳TW_248 @WangCai_8",
+                "🇨🇳TW_249 @WangCai_8",
+                "🇨🇳TW_250 @WangCai_8",
+                "🇨🇳TW_251 @WangCai_8",
+                "🇨🇳TW_252 @WangCai_8",
+                "🇨🇳TW_253 @WangCai_8",
+                "🇨🇳TW_254 @WangCai_8",
+                "🇨🇳TW_255 @WangCai_8"
+            ]
+        },
+        {
+            "tag": "urltest",
+            "type": "urltest",
+            "outbounds": [
+                "🇨🇳TW_0 @WangCai_8",
+                "🇨🇳TW_1 @WangCai_8",
+                "🇨🇳TW_2 @WangCai_8",
+                "🇨🇳TW_3 @WangCai_8",
+                "🇨🇳TW_4 @WangCai_8",
+                "🇨🇳TW_5 @WangCai_8",
+                "🇨🇳TW_6 @WangCai_8",
+                "🇨🇳TW_7 @WangCai_8",
+                "🇨🇳TW_8 @WangCai_8",
+                "🇨🇳TW_9 @WangCai_8",
+                "🇨🇳TW_10 @WangCai_8",
+                "🇨🇳TW_11 @WangCai_8",
+                "🇨🇳TW_12 @WangCai_8",
+                "🇨🇳TW_13 @WangCai_8",
+                "🇨🇳TW_14 @WangCai_8",
+                "🇨🇳TW_15 @WangCai_8",
+                "🇨🇳TW_16 @WangCai_8",
+                "🇨🇳TW_17 @WangCai_8",
+                "🇨🇳TW_18 @WangCai_8",
+                "🇨🇳TW_19 @WangCai_8",
+                "🇨🇳TW_20 @WangCai_8",
+                "🇨🇳TW_21 @WangCai_8",
+                "🇨🇳TW_22 @WangCai_8",
+                "🇨🇳TW_23 @WangCai_8",
+                "🇨🇳TW_24 @WangCai_8",
+                "🇨🇳TW_25 @WangCai_8",
+                "🇨🇳TW_26 @WangCai_8",
+                "🇨🇳TW_27 @WangCai_8",
+                "🇨🇳TW_28 @WangCai_8",
+                "🇨🇳TW_29 @WangCai_8",
+                "🇨🇳TW_30 @WangCai_8",
+                "🇨🇳TW_31 @WangCai_8",
+                "🇨🇳TW_32 @WangCai_8",
+                "🇨🇳TW_33 @WangCai_8",
+                "🇨🇳TW_34 @WangCai_8",
+                "🇨🇳TW_35 @WangCai_8",
+                "🇨🇳TW_36 @WangCai_8",
+                "🇨🇳TW_37 @WangCai_8",
+                "🇨🇳TW_38 @WangCai_8",
+                "🇨🇳TW_39 @WangCai_8",
+                "🇨🇳TW_40 @WangCai_8",
+                "🇨🇳TW_41 @WangCai_8",
+                "🇨🇳TW_42 @WangCai_8",
+                "🇨🇳TW_43 @WangCai_8",
+                "🇨🇳TW_44 @WangCai_8",
+                "🇨🇳TW_45 @WangCai_8",
+                "🇨🇳TW_46 @WangCai_8",
+                "🇨🇳TW_47 @WangCai_8",
+                "🇨🇳TW_48 @WangCai_8",
+                "🇨🇳TW_49 @WangCai_8",
+                "🇨🇳TW_50 @WangCai_8",
+                "🇨🇳TW_51 @WangCai_8",
+                "🇨🇳TW_52 @WangCai_8",
+                "🇨🇳TW_53 @WangCai_8",
+                "🇨🇳TW_54 @WangCai_8",
+                "🇨🇳TW_55 @WangCai_8",
+                "🇨🇳TW_56 @WangCai_8",
+                "🇨🇳TW_57 @WangCai_8",
+                "🇨🇳TW_58 @WangCai_8",
+                "🇨🇳TW_59 @WangCai_8",
+                "🇨🇳TW_60 @WangCai_8",
+                "🇨🇳TW_61 @WangCai_8",
+                "🇨🇳TW_62 @WangCai_8",
+                "🇨🇳TW_63 @WangCai_8",
+                "🇨🇳TW_64 @WangCai_8",
+                "🇨🇳TW_65 @WangCai_8",
+                "🇨🇳TW_66 @WangCai_8",
+                "🇨🇳TW_67 @WangCai_8",
+                "🇨🇳TW_68 @WangCai_8",
+                "🇨🇳TW_69 @WangCai_8",
+                "🇨🇳TW_70 @WangCai_8",
+                "🇨🇳TW_71 @WangCai_8",
+                "🇨🇳TW_72 @WangCai_8",
+                "🇨🇳TW_73 @WangCai_8",
+                "🇨🇳TW_74 @WangCai_8",
+                "🇨🇳TW_75 @WangCai_8",
+                "🇨🇳TW_76 @WangCai_8",
+                "🇨🇳TW_77 @WangCai_8",
+                "🇨🇳TW_78 @WangCai_8",
+                "🇨🇳TW_79 @WangCai_8",
+                "🇨🇳TW_80 @WangCai_8",
+                "🇨🇳TW_81 @WangCai_8",
+                "🇨🇳TW_82 @WangCai_8",
+                "🇨🇳TW_83 @WangCai_8",
+                "🇨🇳TW_84 @WangCai_8",
+                "🇨🇳TW_85 @WangCai_8",
+                "🇨🇳TW_86 @WangCai_8",
+                "🇨🇳TW_87 @WangCai_8",
+                "🇨🇳TW_88 @WangCai_8",
+                "🇨🇳TW_89 @WangCai_8",
+                "🇨🇳TW_90 @WangCai_8",
+                "🇨🇳TW_91 @WangCai_8",
+                "🇨🇳TW_92 @WangCai_8",
+                "🇨🇳TW_93 @WangCai_8",
+                "🇨🇳TW_94 @WangCai_8",
+                "🇨🇳TW_95 @WangCai_8",
+                "🇨🇳TW_96 @WangCai_8",
+                "🇨🇳TW_97 @WangCai_8",
+                "🇨🇳TW_98 @WangCai_8",
+                "🇨🇳TW_99 @WangCai_8",
+                "🇨🇳TW_100 @WangCai_8",
+                "🇨🇳TW_101 @WangCai_8",
+                "🇨🇳TW_102 @WangCai_8",
+                "🇨🇳TW_103 @WangCai_8",
+                "🇨🇳TW_104 @WangCai_8",
+                "🇨🇳TW_105 @WangCai_8",
+                "🇨🇳TW_106 @WangCai_8",
+                "🇨🇳TW_107 @WangCai_8",
+                "🇨🇳TW_108 @WangCai_8",
+                "🇨🇳TW_109 @WangCai_8",
+                "🇨🇳TW_110 @WangCai_8",
+                "🇨🇳TW_111 @WangCai_8",
+                "🇨🇳TW_112 @WangCai_8",
+                "🇨🇳TW_113 @WangCai_8",
+                "🇨🇳TW_114 @WangCai_8",
+                "🇨🇳TW_115 @WangCai_8",
+                "🇨🇳TW_116 @WangCai_8",
+                "🇨🇳TW_117 @WangCai_8",
+                "🇨🇳TW_118 @WangCai_8",
+                "🇨🇳TW_119 @WangCai_8",
+                "🇨🇳TW_120 @WangCai_8",
+                "🇨🇳TW_121 @WangCai_8",
+                "🇨🇳TW_122 @WangCai_8",
+                "🇨🇳TW_123 @WangCai_8",
+                "🇨🇳TW_124 @WangCai_8",
+                "🇨🇳TW_125 @WangCai_8",
+                "🇨🇳TW_126 @WangCai_8",
+                "🇨🇳TW_127 @WangCai_8",
+                "🇨🇳TW_128 @WangCai_8",
+                "🇨🇳TW_129 @WangCai_8",
+                "🇨🇳TW_130 @WangCai_8",
+                "🇨🇳TW_131 @WangCai_8",
+                "🇨🇳TW_132 @WangCai_8",
+                "🇨🇳TW_133 @WangCai_8",
+                "🇨🇳TW_134 @WangCai_8",
+                "🇨🇳TW_135 @WangCai_8",
+                "🇨🇳TW_136 @WangCai_8",
+                "🇨🇳TW_137 @WangCai_8",
+                "🇨🇳TW_138 @WangCai_8",
+                "🇨🇳TW_139 @WangCai_8",
+                "🇨🇳TW_140 @WangCai_8",
+                "🇨🇳TW_141 @WangCai_8",
+                "🇨🇳TW_142 @WangCai_8",
+                "🇨🇳TW_143 @WangCai_8",
+                "🇨🇳TW_144 @WangCai_8",
+                "🇨🇳TW_145 @WangCai_8",
+                "🇨🇳TW_146 @WangCai_8",
+                "🇨🇳TW_147 @WangCai_8",
+                "🇨🇳TW_148 @WangCai_8",
+                "🇨🇳TW_149 @WangCai_8",
+                "🇨🇳TW_150 @WangCai_8",
+                "🇨🇳TW_151 @WangCai_8",
+                "🇨🇳TW_152 @WangCai_8",
+                "🇨🇳TW_153 @WangCai_8",
+                "🇨🇳TW_154 @WangCai_8",
+                "🇨🇳TW_155 @WangCai_8",
+                "🇨🇳TW_156 @WangCai_8",
+                "🇨🇳TW_157 @WangCai_8",
+                "🇨🇳TW_158 @WangCai_8",
+                "🇨🇳TW_159 @WangCai_8",
+                "🇨🇳TW_160 @WangCai_8",
+                "🇨🇳TW_161 @WangCai_8",
+                "🇨🇳TW_162 @WangCai_8",
+                "🇨🇳TW_163 @WangCai_8",
+                "🇨🇳TW_164 @WangCai_8",
+                "🇨🇳TW_165 @WangCai_8",
+                "🇨🇳TW_166 @WangCai_8",
+                "🇨🇳TW_167 @WangCai_8",
+                "🇨🇳TW_168 @WangCai_8",
+                "🇨🇳TW_169 @WangCai_8",
+                "🇨🇳TW_170 @WangCai_8",
+                "🇨🇳TW_171 @WangCai_8",
+                "🇨🇳TW_172 @WangCai_8",
+                "🇨🇳TW_173 @WangCai_8",
+                "🇨🇳TW_174 @WangCai_8",
+                "🇨🇳TW_175 @WangCai_8",
+                "🇨🇳TW_176 @WangCai_8",
+                "🇨🇳TW_177 @WangCai_8",
+                "🇨🇳TW_178 @WangCai_8",
+                "🇨🇳TW_179 @WangCai_8",
+                "🇨🇳TW_180 @WangCai_8",
+                "🇨🇳TW_181 @WangCai_8",
+                "🇨🇳TW_182 @WangCai_8",
+                "🇨🇳TW_183 @WangCai_8",
+                "🇨🇳TW_184 @WangCai_8",
+                "🇨🇳TW_185 @WangCai_8",
+                "🇨🇳TW_186 @WangCai_8",
+                "🇨🇳TW_187 @WangCai_8",
+                "🇨🇳TW_188 @WangCai_8",
+                "🇨🇳TW_189 @WangCai_8",
+                "🇨🇳TW_190 @WangCai_8",
+                "🇨🇳TW_191 @WangCai_8",
+                "🇨🇳TW_192 @WangCai_8",
+                "🇨🇳TW_193 @WangCai_8",
+                "🇨🇳TW_194 @WangCai_8",
+                "🇨🇳TW_195 @WangCai_8",
+                "🇨🇳TW_196 @WangCai_8",
+                "🇨🇳TW_197 @WangCai_8",
+                "🇨🇳TW_198 @WangCai_8",
+                "🇨🇳TW_199 @WangCai_8",
+                "🇨🇳TW_200 @WangCai_8",
+                "🇨🇳TW_201 @WangCai_8",
+                "🇨🇳TW_202 @WangCai_8",
+                "🇨🇳TW_203 @WangCai_8",
+                "🇨🇳TW_204 @WangCai_8",
+                "🇨🇳TW_205 @WangCai_8",
+                "🇨🇳TW_206 @WangCai_8",
+                "🇨🇳TW_207 @WangCai_8",
+                "🇨🇳TW_208 @WangCai_8",
+                "🇨🇳TW_209 @WangCai_8",
+                "🇨🇳TW_210 @WangCai_8",
+                "🇨🇳TW_211 @WangCai_8",
+                "🇨🇳TW_212 @WangCai_8",
+                "🇨🇳TW_213 @WangCai_8",
+                "🇨🇳TW_214 @WangCai_8",
+                "🇨🇳TW_215 @WangCai_8",
+                "🇨🇳TW_216 @WangCai_8",
+                "🇨🇳TW_217 @WangCai_8",
+                "🇨🇳TW_218 @WangCai_8",
+                "🇨🇳TW_219 @WangCai_8",
+                "🇨🇳TW_220 @WangCai_8",
+                "🇨🇳TW_221 @WangCai_8",
+                "🇨🇳TW_222 @WangCai_8",
+                "🇨🇳TW_223 @WangCai_8",
+                "🇨🇳TW_224 @WangCai_8",
+                "🇨🇳TW_225 @WangCai_8",
+                "🇨🇳TW_226 @WangCai_8",
+                "🇨🇳TW_227 @WangCai_8",
+                "🇨🇳TW_228 @WangCai_8",
+                "🇨🇳TW_229 @WangCai_8",
+                "🇨🇳TW_230 @WangCai_8",
+                "🇨🇳TW_231 @WangCai_8",
+                "🇨🇳TW_232 @WangCai_8",
+                "🇨🇳TW_233 @WangCai_8",
+                "🇨🇳TW_234 @WangCai_8",
+                "🇨🇳TW_235 @WangCai_8",
+                "🇨🇳TW_236 @WangCai_8",
+                "🇨🇳TW_237 @WangCai_8",
+                "🇨🇳TW_238 @WangCai_8",
+                "🇨🇳TW_239 @WangCai_8",
+                "🇨🇳TW_240 @WangCai_8",
+                "🇨🇳TW_241 @WangCai_8",
+                "🇨🇳TW_242 @WangCai_8",
+                "🇨🇳TW_243 @WangCai_8",
+                "🇨🇳TW_244 @WangCai_8",
+                "🇨🇳TW_245 @WangCai_8",
+                "🇨🇳TW_246 @WangCai_8",
+                "🇨🇳TW_247 @WangCai_8",
+                "🇨🇳TW_248 @WangCai_8",
+                "🇨🇳TW_249 @WangCai_8",
+                "🇨🇳TW_250 @WangCai_8",
+                "🇨🇳TW_251 @WangCai_8",
+                "🇨🇳TW_252 @WangCai_8",
+                "🇨🇳TW_253 @WangCai_8",
+                "🇨🇳TW_254 @WangCai_8",
+                "🇨🇳TW_255 @WangCai_8"
+            ],
+            "interval": "15m"
+        },
+        {
+            "tag": "direct",
+            "type": "direct"
+        },
+        {
+            "tag": "block",
+            "type": "block"
+        },
+        {
+            "tag": "dns-out",
+            "type": "dns"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.0",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_0 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.1",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_1 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.2",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_2 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.3",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_3 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.4",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_4 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.5",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_5 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.6",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_6 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.7",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_7 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.8",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_8 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.9",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_9 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.10",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_10 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.11",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_11 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.12",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_12 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.13",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_13 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.14",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_14 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.15",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_15 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.16",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_16 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.17",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_17 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.18",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_18 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.19",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_19 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.20",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_20 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.21",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_21 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.22",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_22 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.23",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_23 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.24",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_24 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.25",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_25 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.26",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_26 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.27",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_27 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.28",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_28 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.29",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_29 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.30",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_30 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.31",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_31 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.32",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_32 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.33",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_33 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.34",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_34 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.35",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_35 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.36",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_36 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.37",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_37 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.38",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_38 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.39",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_39 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.40",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_40 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.41",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_41 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.42",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_42 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.43",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_43 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.44",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_44 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.45",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_45 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.46",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_46 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.47",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_47 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.48",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_48 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.49",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_49 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.50",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_50 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.51",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_51 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.52",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_52 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.53",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_53 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.54",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_54 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.55",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_55 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.56",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_56 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.57",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_57 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.58",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_58 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.59",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_59 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.60",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_60 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.61",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_61 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.62",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_62 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.63",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_63 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.64",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_64 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.65",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_65 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.66",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_66 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.67",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_67 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.68",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_68 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.69",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_69 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.70",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_70 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.71",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_71 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.72",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_72 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.73",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_73 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.74",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_74 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.75",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_75 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.76",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_76 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.77",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_77 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.78",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_78 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.79",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_79 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.80",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_80 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.81",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_81 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.82",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_82 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.83",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_83 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.84",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_84 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.85",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_85 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.86",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_86 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.87",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_87 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.88",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_88 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.89",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_89 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.90",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_90 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.91",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_91 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.92",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_92 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.93",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_93 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.94",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_94 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.95",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_95 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.96",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_96 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.97",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_97 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.98",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_98 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.99",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_99 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.100",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_100 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.101",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_101 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.102",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_102 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.103",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_103 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.104",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_104 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.105",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_105 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.106",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_106 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.107",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_107 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.108",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_108 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.109",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_109 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.110",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_110 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.111",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_111 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.112",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_112 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.113",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_113 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.114",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_114 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.115",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_115 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.116",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_116 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.117",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_117 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.118",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_118 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.119",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_119 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.120",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_120 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.121",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_121 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.122",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_122 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.123",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_123 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.124",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_124 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.125",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_125 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.126",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_126 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.127",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_127 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.128",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_128 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.129",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_129 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.130",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_130 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.131",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_131 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.132",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_132 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.133",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_133 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.134",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_134 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.135",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_135 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.136",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_136 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.137",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_137 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.138",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_138 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.139",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_139 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.140",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_140 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.141",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_141 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.142",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_142 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.143",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_143 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.144",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_144 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.145",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_145 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.146",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_146 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.147",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_147 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.148",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_148 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.149",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_149 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.150",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_150 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.151",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_151 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.152",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_152 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.153",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_153 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.154",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_154 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.155",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_155 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.156",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_156 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.157",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_157 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.158",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_158 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.159",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_159 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.160",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_160 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.161",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_161 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.162",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_162 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.163",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_163 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.164",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_164 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.165",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_165 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.166",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_166 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.167",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_167 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.168",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_168 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.169",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_169 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.170",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_170 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.171",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_171 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.172",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_172 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.173",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_173 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.174",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_174 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.175",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_175 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.176",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_176 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.177",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_177 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.178",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_178 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.179",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_179 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.180",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_180 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.181",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_181 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.182",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_182 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.183",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_183 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.184",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_184 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.185",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_185 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.186",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_186 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.187",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_187 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.188",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_188 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.189",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_189 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.190",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_190 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.191",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_191 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.192",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_192 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.193",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_193 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.194",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_194 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.195",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_195 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.196",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_196 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.197",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_197 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.198",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_198 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.199",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_199 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.200",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_200 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.201",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_201 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.202",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_202 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.203",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_203 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.204",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_204 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.205",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_205 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.206",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_206 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.207",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_207 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.208",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_208 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.209",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_209 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.210",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_210 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.211",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_211 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.212",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_212 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.213",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_213 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.214",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_214 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.215",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_215 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.216",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_216 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.217",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_217 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.218",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_218 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.219",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_219 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.220",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_220 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.221",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_221 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.222",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_222 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.223",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_223 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.224",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_224 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.225",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_225 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.226",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_226 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.227",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_227 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.228",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_228 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.229",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_229 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.230",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_230 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.231",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_231 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.232",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_232 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.233",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_233 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.234",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_234 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.235",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_235 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.236",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_236 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.237",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_237 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.238",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_238 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.239",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_239 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.240",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_240 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.241",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_241 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.242",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_242 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.243",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_243 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.244",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_244 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.245",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_245 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.246",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_246 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.247",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_247 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.248",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_248 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.249",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_249 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.250",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_250 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.251",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_251 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.252",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_252 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.253",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_253 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.254",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_254 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        },
+        {
+            "alter_id": 0,
+            "network": "tcp",
+            "security": "auto",
+            "server": "104.19.46.255",
+            "server_port": 2082,
+            "tag": "🇨🇳TW_255 @WangCai_8",
+            "transport": {
+                "headers": {
+                    "host": "tw2.6bkc.top"
+                },
+                "path": "/?ed=2048\u0026Telegram🇨🇳 @WangCai2",
+                "type": "ws"
+            },
+            "type": "vmess",
+            "uuid": "19f11a24-7867-443e-b615-fe08772547db"
+        }
     ],
-    "fakeip": {
-      "enabled": true,
-      "inet4_range": "198.18.0.0/15",
-      "inet6_range": "fc00::/18"
-    },
-    "strategy": "prefer_ipv4",
-    "independent_cache": true
-  },
-  "inbounds": [
-    {
-      "type": "socks",
-      "tag": "socks-in",
-      "listen": "0.0.0.0",
-      "listen_port": 10173,
-      "sniff": true,
-      "sniff_override_destination": false,
-      "domain_strategy": "prefer_ipv4"
-    },
-    {
-      "type": "mixed",
-      "tag": "mixed-in",
-      "listen": "0.0.0.0",
-      "listen_port": 10172,
-      "sniff": true,
-      "sniff_override_destination": false,
-      "domain_strategy": "prefer_ipv4",
-      "set_system_proxy": false
-    }
-  ],
-  "outbounds": [
-    {
-      "type": "selector",
-      "tag": "select",
-      "outbounds": [
-        "urltest"
-      ],
-      "default": "urltest"
-    },
-    {
-      "type": "urltest",
-      "tag": "urltest",
-      "interval": "15m",
-      "outbounds": null
-    },
-    {
-      "type": "direct",
-      "tag": "direct"
-    },
-    {
-      "type": "block",
-      "tag": "block"
-    },
-    {
-      "type": "dns",
-      "tag": "dns-out"
-    }
-  ],
-  "route": {
-    "rules": [
-      {
-        "geosite": "category-ads-all",
-        "outbound": "block"
-      },
-      {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
-            "protocol": "dns"
-          },
-          {
-            "port": 53
-          }
-        ],
-        "outbound": "dns-out"
-      },
-      {
-        "ip_is_private": true,
-        "outbound": "direct"
-      },
-      {
-        "clash_mode": "Direct",
-        "outbound": "direct"
-      },
-      {
-        "clash_mode": "Global",
-        "outbound": "select"
-      },
-      {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
-            "port": 853
-          },
-          {
-            "network": "udp",
-            "port": 443
-          },
-          {
-            "protocol": "stun"
-          }
-        ],
-        "outbound": "block"
-      },
-      {
+    "route": {
+        "auto_detect_interface": false,
         "rule_set": [
-          "geoip-cn",
-          "geosite-geolocation-cn"
+            {
+                "format": "binary",
+                "tag": "geoip-cn",
+                "type": "remote",
+                "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs"
+            },
+            {
+                "format": "binary",
+                "tag": "geosite-geolocation-cn",
+                "type": "remote",
+                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-cn.srs"
+            },
+            {
+                "format": "binary",
+                "tag": "geosite-geolocation-!cn",
+                "type": "remote",
+                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-!cn.srs"
+            }
         ],
-        "outbound": "direct"
-      }
-    ],
-    "rule_set": [
-      {
-        "type": "remote",
-        "tag": "geoip-cn",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs"
-      },
-      {
-        "type": "remote",
-        "tag": "geosite-geolocation-cn",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-cn.srs"
-      },
-      {
-        "type": "remote",
-        "tag": "geosite-geolocation-!cn",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-!cn.srs"
-      }
-    ],
-    "auto_detect_interface": false
-  },
-  "experimental": {
-    "cache_file": {
-      "enabled": true,
-      "store_rdrc": true
-    },
-    "clash_api": {
-      "external_controller": "127.0.0.1:19090",
-      "default_mode": "Enhanced"
+        "rules": [
+            {
+                "geosite": "category-ads-all",
+                "outbound": "block"
+            },
+            {
+                "mode": "or",
+                "outbound": "dns-out",
+                "rules": [
+                    {
+                        "protocol": "dns"
+                    },
+                    {
+                        "port": 53
+                    }
+                ],
+                "type": "logical"
+            },
+            {
+                "ip_is_private": true,
+                "outbound": "direct"
+            },
+            {
+                "clash_mode": "Direct",
+                "outbound": "direct"
+            },
+            {
+                "clash_mode": "Global",
+                "outbound": "select"
+            },
+            {
+                "mode": "or",
+                "outbound": "block",
+                "rules": [
+                    {
+                        "port": 853
+                    },
+                    {
+                        "network": "udp",
+                        "port": 443
+                    },
+                    {
+                        "protocol": "stun"
+                    }
+                ],
+                "type": "logical"
+            },
+            {
+                "outbound": "direct",
+                "rule_set": [
+                    "geoip-cn",
+                    "geosite-geolocation-cn"
+                ]
+            }
+        ]
     }
-  }
 }
-
