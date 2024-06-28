@@ -803,9 +803,9 @@
 		}],
 		"lives":[
 			{
-				"name": "live.ipv6",
+				"name": "pixman",
 				"type": 0,
-				"url": "http://127.0.0.1:10079/p/0/proxy/https://fanmingming.com/txt?url=https://live.fanmingming.com/tv/m3u/ipv6.m3u",
+				"url": "./lib/ycl_iptv.m3u",
 				
 				"ua": "okhttp/3.15",
 				"epg": "http://127.0.0.1:10079/p/0/proxy/http://epg.112114.xyz/?ch={name}&date={date}",
@@ -932,105 +932,6 @@
 				"ips": [
 					"9.9.9.9",
 					"149.112.112.112"
-				]
-			}
-		],
-		"rules":[
-			{
-				"name": "proxy",
-				"hosts": [
-					"raw.githubusercontent.com",
-					"googlevideo.com",
-					"cdn.v82u1l.com",
-					"cdn.iz8qkg.com",
-					"cdn.kin6c1.com",
-					"c.biggggg.com",
-					"c.olddddd.com",
-					"haiwaikan.com",
-					"www.histar.tv",
-					"youtube.com",
-					"uhibo.com",
-					".*boku.*",
-					".*nivod.*",
-					"*.t4tv.hz.cz",
-					".*ulivetv.*"
-				]
-			},
-			{"host":"www.djuu.com","rule":["mp4.djuu.com","m4a"]},{"host":"www.sharenice.net","rule":["huoshan.com","/item/video/"],"filter":[]},
-			{"host":"www.sharenice.net","rule":["sovv.qianpailive.com","vid="],"filter":[]},
-			{"host":"www.sharenice.net","rule":["douyin.com","/play/"]},
-			{"host":"m.ysxs8.vip","rule":["ysting.ysxs8.vip:81","xmcdn.com"],"filter":[]},
-			{"host":"hdmoli.com","rule":[".m3u8"]},{"host":"https://api.live.bilibili.com","rule":["bilivideo.com","/index.m3u8"],"filter":["data.bilibili.com/log/web","i0.hdslb.com/bfs/live/"]},
-			{"host":"www.agemys.cc","rule":["cdn-tos","obj/tos-cn"]},
-			{"host":"www.fun4k.com","rule":["https://hd.ijycnd.com/play","index.m3u8"]},
-			{"host":"zjmiao.com","rule":["play.videomiao.vip/API.php","time=","key=","path="]},
-			{
-				"name": "火山嗅探",
-				"hosts": [
-					"huoshan.com"
-				],
-				"regex": [
-					"item_id="
-				]
-			},
-			{
-				"name": "抖音嗅探",
-				"hosts": [
-					"douyin.com"
-				],
-				"regex": [
-					"is_play_url="
-				]
-			},
-			{
-				"name": "農民嗅探",
-				"hosts": [
-					"toutiaovod.com"
-				],
-				"regex": [
-					"video/tos/cn"
-				]
-			},
-			{
-				"name": "夜市",
-				"hosts": [
-					"yeslivetv.com"
-				],
-				"script": [
-					"document.getElementsByClassName('vjs-big-play-button')[0].click()"
-				]
-			},
-			{
-				"name": "毛驢",
-				"hosts": [
-					"www.maolvys.com"
-				],
-				"script": [
-					"document.getElementsByClassName('swal-button swal-button--confirm')[0].click()"
-				]
-			},
-			{
-				"name": "磁力广告",
-				"hosts": [
-					"magnet"
-				],
-				"regex": [
-					"更多",
-					"社 區",
-					"x u u",
-					"最 新",
-					"直 播",
-					"更 新",
-					"社 区",
-					"有 趣",
-					"英皇体育",
-					"全中文AV在线",
-					"澳门皇冠赌场",
-					"哥哥快来",
-					"美女荷官",
-					"裸聊",
-					"新片首发",
-					"UUE29"
 				]
 			}
 		],
