@@ -83,33 +83,20 @@
       "listen": "0.0.0.0",
       "listen_port": 10173,
       "tcp_fast_open":true,
-      "sniff": true,
+      "sniff": false,
       "sniff_override_destination": false,
       "domain_strategy": "prefer_ipv4"
     },
     {
-      "type": "tun",
-      "inet4_address": "172.19.0.1/30",
-      "mtu": 9000,
-      "auto_route": true,
-      "strict_route": false,
-      "sniff": true,
-      "endpoint_independent_nat": false,
-      "stack": "system",
-      "platform": {
-        "http_proxy": {
-          "enabled": true,
-          "server": "0.0.0.0",
-          "server_port": 10175
-        }
-      }
-    },
-    {
       "type": "mixed",
+      "tag": "mixed-in",
       "listen": "0.0.0.0",
       "listen_port": 10172,
-      "sniff": true,
-      "users": []
+      "tcp_fast_open":true,
+      "sniff": false,
+      "sniff_override_destination": false,
+      "domain_strategy": "prefer_ipv4",
+      "set_system_proxy": false
     }
   ],
   "outbounds": [
@@ -124,10 +111,10 @@
     {
       "type": "urltest",
       "tag": "urltest",
-      "outbounds": null,
-      "url": "http://www.gstatic.com/generate_204",
-      "interval": "10m",
-      "tolerance": 50	  
+      "interval": "30m",
+      "idle_timeout": "60m",
+      "interrupt_exist_connections": false,
+      "outbounds": null
     },
     {
       "type": "direct",
@@ -215,36 +202,21 @@
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-!cn.srs",
 	"download_detour": "select"
-      },
-      {
-        "tag": "geosite-youtube",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/youtube.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "geoip-google",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/google.srs",
-        "download_detour": "direct"
-      }	  
+      }
     ],
     "auto_detect_interface": false
   },
   "experimental": {
+    "cache_file": {
+      "enabled": true,
+      "store_rdrc": true
+    },
     "clash_api": {
       "external_controller": "0.0.0.0:19090",
       "external_ui": "ui",
-      "secret": "",
-      "external_ui_download_url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip",
-      "external_ui_download_detour": "direct",
+      "external_ui_download_url": "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip",
+      "external_ui_download_detour": "select",
       "default_mode": "rule"
-    },
-    "cache_file": {
-      "enabled": true,
-      "store_fakeip": false
     }
   }
 }
