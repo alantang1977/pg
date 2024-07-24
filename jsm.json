@@ -1,5 +1,5 @@
 {
-	"spider":"./pg.jar;md5;ea34f3999eeccc1d9fdf43b95537bac9",
+	"spider":"./pg.jar",
 	"sites":[
 		{
 			"key":"Youtube",
