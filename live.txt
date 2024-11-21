@@ -1,5 +1,4 @@
-更新时间,#genre#
-2024-10-14
+中央卫视,#genre#
 CCTV-1 综合,http://php.iptviptv.site/iptv.php?id=cctv01
 CCTV-2 财经,http://php.iptviptv.site/iptv.php?id=cctv2
 CCTV-3 综艺,http://php.iptviptv.site/iptv.php?id=cctvz3
@@ -95,6 +94,8 @@ CCTV-17 农业高清,http://php.iptviptv.site/iptv.php?id=cctv17
 陕西体育,http://php.iptviptv.site/iptv.php?id=sxtysxty
 西部电影,http://php.iptviptv.site/iptv.php?id=sxxbdydytr
 西安影视,http://php.iptviptv.site/iptv.php?id=sxxady
+
+广东,#genre#
 广东卫视,http://php.iptviptv.site/iptv.php?id=gdws651
 广东珠江,http://php.iptviptv.site/iptv.php?id=gdzjzj
 大湾区卫视,http://php.iptviptv.site/iptv.php?id=dawanqu678
@@ -114,6 +115,7 @@ CCTV-17 农业高清,http://php.iptviptv.site/iptv.php?id=cctv17
 广西新闻,http://php.iptviptv.site/iptv.php?id=gxxw
 广西综艺,http://php.iptviptv.site/iptv.php?id=gxzy
 广西影视,http://php.iptviptv.site/iptv.php?id=gxys
+
 南宁新闻,http://php.iptviptv.site/iptv.php?id=nlxw
 南宁影视,http://php.iptviptv.site/iptv.php?id=nlys
 河北都市,http://php.iptviptv.site/iptv.php?id=hbds
@@ -161,6 +163,25 @@ CHC影迷电影,http://php.iptviptv.site/iptv.php?id=chcmy
 北京新闻,http://php.iptviptv.site/iptv.php?id=beijingxw
 北京卡酷少儿,http://php.iptviptv.site/iptv.php?id=beijingku
 V音乐台,http://php.iptviptv.site/iptv.php?id=vyinyue
+
+港·澳·台·韩,#genre#
+美亞電影,https://stream1.freetv.fun/mei-ya-dian-ying-3.m3u8
+SPORTV 4K,http://ssuny1.com:80/763272065/1469585/284576
+Premiere Clubes 4K,http://ssuny1.com:80/763272065/1469585/284578
+Premiere2,http://ssuny1.com:80/763272065/1469585/284579
+FOX SPORTS 4K,http://ssuny1.com:80/763272065/1469585/284581
+FOX SPORTS2 4K,http://ssuny1.com:80/763272065/1469585/284582
+ESPN 4K,http://ssuny1.com:80/763272065/1469585/284584
+AXN 4K,http://ssuny1.com:80/763272065/1469585/284601
+HBO 4K,http://ssuny1.com:80/763272065/1469585/284603
+HBO FAMILY FHD,http://ssuny1.com:80/763272065/1469585/18759
+HBO SIGNATURE UHD,http://ssuny1.com:80/763272065/1469585/21250
+SYFY UHD,http://ssuny1.com:80/763272065/1469585/21277
+AMC UHD,http://ssuny1.com:80/763272065/1469585/59171
+Animal Planet UHD,http://ssuny1.com:80/763272065/1469585/22305
+Canal Sony UHD,http://ssuny1.com:80/763272065/1469585/21229
+Cinemax UHD,http://ssuny1.com:80/763272065/1469585/21231
+Fashion TV FHD,http://ssuny1.com:80/763272065/1469585/2476
 HBO,http://php.iptviptv.site/iptv.php?id=HBO
 今日俄罗斯,http://php.iptviptv.site/iptv.php?id=elsjr
 日本NHK,http://php.iptviptv.site/iptv.php?id=nhk
