@@ -410,6 +410,7 @@
 			}
 		},
 		{"key":"drpy_js_MP4US","name":"MP4电影[js]|磁","type":3,"api":"./lib/drpy2.min.js","ext":"./js/mp4us.js", "quickSearch":1, "changeable":1, "timeout":60},
+		{"key":"drpy_js_88ball","name":"88看球[js]","type":3,"api":"./lib/drpy2.min.js","ext":"./js/88ball.js", "quickSearch":0, "searchable":0, "changeable":0, "timeout":30},
 		{"key":"4KHDR","name":"4KHDR|网盘","type":3,"api":"csp_FourKHDR","quickSearch":1, "changeable":1, "filterable":1, "timeout":60, "ext":"./lib/tokenm.json$$$./lib/4khdr.txt$$$1",
 			"style": {
 				"type": "list",
@@ -657,14 +658,7 @@
 			"searchable": 1,
 			"changeable": 0
 		},
-		{
-			"key": "Iktv",
-			"name": "KTV",
-			"type": 3,
-			"api": "csp_Iktv",
-			"searchable": 1,
-			"changeable": 0
-		},
+		{ "key": "hipy_js_KTV歌厅[听]1", "name": "🎤KTV歌厅在线", "type": 3, "api": "http://kxrj.site:55/lib/drpy2.min.js", "searchable": 1, "quickSearch": 1, "filterable": 1, "order_num": 0, "ext": "http://kxrj.site:55/lib/js/KTV歌厅[听].js" },
 		{
 			"key": "Yinyuetai",
 			"name": "音悦台",
@@ -704,6 +698,14 @@
 				"name": "肥羊咪咕赛事直播",
 				"type": 0,
 				"url": "http://127.0.0.1:10079/c/1800/null/http://127.0.0.1:35456/miguevent.m3u",
+				"ua": "okhttp/3.15",
+				"epg": "http://127.0.0.1:10079/p/0/proxy/http://epg.112114.xyz/?ch={name}&date={date}",
+				"logo": "http://127.0.0.1:10079/p/0/proxy/https://epg.112114.xyz/logo/{name}.png"
+			},
+			{
+				"name": "肥羊TX赛事直播",
+				"type": 0,
+				"url": "http://127.0.0.1:10079/c/10/null/http://127.0.0.1:35456/txevent.m3u",
 				"ua": "okhttp/3.15",
 				"epg": "http://127.0.0.1:10079/p/0/proxy/http://epg.112114.xyz/?ch={name}&date={date}",
 				"logo": "http://127.0.0.1:10079/p/0/proxy/https://epg.112114.xyz/logo/{name}.png"
