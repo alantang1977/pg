@@ -2,28 +2,192 @@
 	"spider":"./pg.jar",
 	"sites":[
 		{
-            "key": "py_love",
-            "name": "🔥py_爱",
-            "type": 3,
-            "api": "https://gh.xxooo.cf/https://raw.githubusercontent.com/alantang1977/X/main/py/py_爱.py",
-            "searchable": 1,
-            "quickSearch": 1,
-            "changeable": 1,
-            "filterable": 1,
-            "timeout": 60
-       },
-       {
-        "key": "py_腾",
-        "name": "🔥py_腾",
-        "type": 3,
-        "api": "https://gh.xxooo.cf/https://raw.githubusercontent.com/alantang1977/X/main/py/py_腾.py",
-        "searchable": 1,
-        "quickSearch": 1,
-        "changeable": 1,
-        "filterable": 1,
-        "timeout": 60
-   },
-        
+			"key": "芒",
+			"name": "🥭py_芒",
+			"type": 3,
+			"api": "./py/py_芒.py",
+			"searchable": 1,
+			"quickSearch": 1,
+			"changeable": 1,
+			"filterable": 1,
+			"timeout": 60
+		},
+		{
+			"key": "腾",
+			"name": "🍵py_腾",
+			"type": 3,
+			"api": "./py/py_腾.py",
+			"searchable": 1,
+			"quickSearch": 1,
+			"changeable": 1,
+			"filterable": 1,
+			"timeout": 60
+		},
+		{
+			"key": "爱",
+			"name": "🥝py_爱",
+			"type": 3,
+			"api": "./py/py_爱.py",
+			"searchable": 1,
+			"quickSearch": 1,
+			"changeable": 1,
+			"filterable": 1,
+			"timeout": 60
+		},
+		{
+			"key": "视觉",
+			"name": "🍅py_视觉",
+			"type": 3,
+			"api": "./py/py_视觉.py",
+			"searchable": 1,
+			"quickSearch": 1,
+			"changeable": 1,
+			"filterable": 1,
+			"timeout": 60
+		},
+		{
+			"key": "金牌",
+			"name": "🏅py_金牌",
+			"type": 3,
+			"api": "./py/py_金牌.py",
+			"searchable": 1,
+			"quickSearch": 1,
+			"changeable": 1,
+			"filterable": 1,
+			"timeout": 60
+		},
+		{
+			"key": "胖虎",
+			"name": "🐯py_胖虎",
+			"type": 3,
+			"api": "./py/py_胖虎.py",
+			"searchable": 1,
+			"quickSearch": 1,
+			"changeable": 1,
+			"filterable": 1,
+			"timeout": 60
+		},
+		{
+			"key": "浴火社",
+			"name": "🔥py_浴火社",
+			"type": 3,
+			"api": "./py/py_浴火社.py",
+			"searchable": 1,
+			"quickSearch": 1,
+			"changeable": 1,
+			"filterable": 1,
+			"timeout": 60
+		},
+		{
+			"key": "py_光速",
+			"name": "💡py_光速",
+			"type": 3,
+			"api": "./py/py_光速.py",
+			"searchable": 1,
+			"quickSearch": 1,
+			"changeable": 1,
+			"filterable": 1,
+			"timeout": 60
+		},
+		{
+			"key": "小红薯",
+			"name": "🍟py_小红薯",
+			"type": 3,
+			"api": "./py/py_小红薯.py",
+			"searchable": 1,
+			"quickSearch": 1,
+			"changeable": 1,
+			"filterable": 1,
+			"timeout": 60
+		},		
+		{
+			"key": "剧多短剧",
+			"name": "🎥py_剧多短剧",
+			"type": 3,
+			"api": "./py/py_剧多短剧.py",
+			"searchable": 1,
+			"quickSearch": 1,
+			"changeable": 1,
+			"filterable": 1,
+			"timeout": 60
+		},		
+		{
+			"key": "hitv",
+			"name": "🎸py_hitv",
+			"type": 3,
+			"api": "./py/py_hitv.py",
+			"searchable": 1,
+			"quickSearch": 1,
+			"changeable": 1,
+			"filterable": 1,
+			"timeout": 60
+		},		
+		{
+			"key": "lav",
+			"name": "🥁py_lav",
+			"type": 3,
+			"api": "./py/py_lav.py",
+			"searchable": 1,
+			"quickSearch": 1,
+			"changeable": 1,
+			"filterable": 1,
+			"timeout": 60
+		},		
+		{
+			"key": "Xhm",
+			"name": "🐸py_Xhm",
+			"type": 3,
+			"api": "./py/py_Xhm.py",
+			"searchable": 1,
+			"quickSearch": 1,
+			"changeable": 1,
+			"filterable": 1,
+			"timeout": 60
+		},
+		{
+			"key": "mp",
+			"name": "🐠py_mp",
+			"type": 3,
+			"api": "./py/py_mp.py",
+			"searchable": 1,
+			"quickSearch": 1,
+			"changeable": 1,
+			"filterable": 1,
+			"timeout": 60
+		},	
+		{
+			"key": "phu",
+			"name": "🐰py_phu",
+			"type": 3,
+			"api": "./py/py_phu.py",
+			"searchable": 1,
+			"quickSearch": 1,
+			"changeable": 1,
+			"filterable": 1,
+			"timeout": 60
+		},	
+		{
+			"key": "xpg",
+			"name": "🐽py_xpg",
+			"type": 3,
+			"api": "./py/py_xpg.py",
+			"searchable": 1,
+			"quickSearch": 1,
+			"changeable": 1,
+			"filterable": 1,
+			"timeout": 60
+		},	
+		{
+			"key": "emby",
+			"name": "🐼py_emby",
+			"type": 3,
+			"api": "./py/py_emby_proxy.py",
+			"searchable": 1,
+			"quickSearch": 1,
+			"changeable": 1,
+			"filterable": 1,
+			"timeout": 60
+		},	
         {
 			"key": "豆瓣",
 			"name": "豆瓣",
@@ -33,46 +197,6 @@
 			"changeable": 1,
 			"indexs":1,
 			"ext": "./lib/tokenm.json$$$./lib/douban.json"
-		},
-		{"key":"TGDouban","name":"TG豆瓣","type":3,"api":"csp_TGDouban","timeout":120, 
-			"ext":{
-				"token":"./lib/tokenm.json",
-				"json":"./lib/tgsearch.json",
-				"keywords":"名称,片名,推荐",
-				"tgsearch_url":"http://127.0.0.1:10199",
-				"tgsearch_media_url":"http://127.0.0.1:10199",
-				"channellist":"leoziyuan,ucpanpan,ydypzyfx,clouddriveresources,NewQuark,New_Sharing,alypzyhzq|1000,Mbox115|1000,shares_115|1000,wanwansubchat|1000",
-				"proxy":"noproxy",
-				"douban":"./lib/douban.json",
-				"danmu":true
-			},
-			"style": {
-				"type": "rect",
-				"ratio": 0.7
-			}
-		},
-		{
-			"key":"Youtube",
-			"name":"Youtube",
-			"type":3,
-			"api": "csp_Youtube",
-			"searchable": 1,
-			"quickSearch": 0,
-			"changeable": 0,
-			"timeout": 120,
-			"ext":{
-				"token":"./lib/tokenm.json",
-				"json":"./lib/youtube.json",
-				"type":"直播#新闻#剧集#电影#综艺#纪录片#音乐#体育#动物#风光#放松#4K#HDR#movie#music#documentary#bbc documentary#national geographic documentary",
-				"keywords":"排行榜,HOT,TRENDS,热门话题,热门趋势,热门综艺,热门电影,热门电视剧,小姐姐",
-				"codecs":"",
-				"proxy":"proxy",
-				"danmu":true
-			},
-			"style": {
-				"type": "rect",
-				"ratio": 1.77
-			}
 		},
 		{
 			"key": "网盘配置",
@@ -85,13 +209,6 @@
 			"style": {
 				"type": "rect",
 				"ratio": 1.5
-			}
-		},
-		{"key":"Local","name":"本地","type":3,"api":"csp_Local"},
-		{"key":"PushShare","name":"我的资源分享","type":3, "api":"csp_PushShare","searchable":1,"quickSearch":1, "changeable":1, "filterable":0, "timeout":60, "ext":"./lib/tokenm.json$$$./lib/pushshare.txt$$$db$$$1",
-			"style": {
-				"type": "list",
-				"ratio": 1.1
 			}
 		},
 		{"key":"AlistShare","name":"网盘分享合集","type":3,"api":"csp_AlistShare","searchable":1,"quickSearch":1, "changeable":1, "filterable":0, "timeout":120, "ext":"./lib/tokenm.json$$$null$$$proxy$$$1",
