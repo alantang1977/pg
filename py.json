@@ -34,18 +34,6 @@
 			"filterable": 1,
 			"timeout": 60
 		},
-
-		{
-			"key": "浴火社",
-			"name": "🔥py_浴火社",
-			"type": 3,
-			"api": "./py/py_浴火社.py",
-			"searchable": 1,
-			"quickSearch": 1,
-			"changeable": 1,
-			"filterable": 1,
-			"timeout": 60
-		},
 		{
 			"key": "py_光速",
 			"name": "💡py_光速",
@@ -101,6 +89,17 @@
 			"filterable": 1,
 			"timeout": 60
 		},
+		{
+			"key": "小红书",
+			"name": "🔥py_小红书",
+			"type": 3,
+			"api": "./py/py_小红书.py",
+			"searchable": 1,
+			"quickSearch": 1,
+			"changeable": 1,
+			"filterable": 1,
+			"timeout": 60
+		},		
 		{
 			"key": "视觉",
 			"name": "🍅py_视觉",
