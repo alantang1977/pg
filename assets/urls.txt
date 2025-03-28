@@ -5,7 +5,6 @@ https://tv.youdu.fan:666/live/
 https://szyyds.cn/tv/live/x.txt
 http://47.120.41.246:8899/zb.txt
 https://live.kilvn.com/iptv.m3u
-https://fm1077.serv00.net/SmartTV.m3u
 https://gitee.com/xxy002/zhiboyuan/raw/master/dsy
 https://cnb.cool/junchao.tang/llive/-/git/raw/main/tvb.txt
 https://cnb.cool/junchao.tang/llive/-/git/raw/main/mytv.txt
@@ -15,9 +14,6 @@ https://cnb.cool/junchao.tang/llive/-/git/raw/main/野火959.txt
 https://gh.tryxd.cn/https://raw.githubusercontent.com/qingtingjjjjjjj/iptv-auto-update/main/my.txt
 https://gh.tryxd.cn/https://raw.githubusercontent.com/alantang1977/auto-iptv/main/live_ipv4.txt
 https://gh.tryxd.cn/https://raw.githubusercontent.com/tianya7981/jiekou/refs/heads/main/野火959
-https://codeberg.org/sy147258/iptv/raw/branch/main/电视
-https://codeberg.org/alantang/MyIPTV/raw/branch/main/MyIPTV.txt
-https://codeberg.org/alantang/MyIPTV/raw/branch/main/MyOg.txt
 https://codeberg.org/lxxcp/live/raw/branch/main/gsdx.txt
 https://gh.tryxd.cn/https://raw.githubusercontent.com/XlllllX/IPTV/main/live_ipv4.txt
 https://gh.tryxd.cn/https://raw.githubusercontent.com/XlllllX/IPTV/main/live_ipv6.txt
@@ -78,10 +74,7 @@ https://iptv-org.github.io/iptv/languages/zho.m3u
 https://iptv-org.github.io/iptv/countries/us.m3u
 https://iptv-org.github.io/iptv/countries/tw.m3u
 https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1715581924111/live1.txt
-https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1715581924675/live2.txt
-https://cc-im-kefu-cos.7moor-fs2.com/im/2768a390-5474-11ea-afc9-7b323e3e16c0/d4fe44c5-107c-4511-af02-aa08fb10dff7/2024-04-25/2024-04-25_17:22:21/1714036941087/98644330/wexiptv.txt
 https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1716213337323/live3.txt
-http://ww.weidonglong.com/dsj.txt
 https://fm1077.serv00.net/SmartTV.m3u
 http://rihou.cc:555/gggg.nzk
 http://rihou.cc:567/gggg.nzk
