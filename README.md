@@ -3,7 +3,7 @@
   <h1 align="center">Welcome</h1>
 </div>
 
-<div align="center">🌶PG节奏熊猫：接口</div>
+<div align="center">💋所有资源均来自于各路大神无私分享，如有侵权，请联系删除。 所有以任何方式查看本仓库内容的人或直接或间接使用本仓库内容的使用者都应仔细阅读此声明。本仓库管理者保留随时更改或补充此免责声明的权利。一旦使用、复制、修改了本仓库内容，则视为您已接受此免责声明。🌶PG节奏熊猫：接口</div>
 <br>
 <p align="center">
   <a href="https://github.com/alantang1977/pg/releases">
