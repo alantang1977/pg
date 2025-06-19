@@ -4,106 +4,104 @@ import json
 import csv
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
-from collections import deque
-from typing import Set, List, Union
 
 # Android-safe emoji sets by categories
-EMOJI_ANIMALS_NATURE = [
+EMOJI_POOL = [
     "🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐨", "🐯",
-    "🦁", "🐮", "🐷", "🐸", "🐵", "🦄", "🐔", "🐧", "🐦", "🐤"
-]
-EMOJI_FOOD_DRINK = [
+    "🦁", "🐮", "🐷", "🐸", "🐵", "🦄", "🐔", "🐧", "🐦", "🐤",
     "🍏", "🍎", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🫐",
-    "🍈", "🍒", "🍑", "🥭", "🍍", "🥥", "🥝", "🍅", "🍆", "🥑"
-]
-EMOJI_ACTIVITY = [
+    "🍈", "🍒", "🍑", "🥭", "🍍", "🥥", "🥝", "🍅", "🍆", "🥑",
     "⚽", "🏀", "🏈", "⚾", "🎾", "🏐", "🏉", "🎱", "🏓", "🏸",
-    "🥅", "🏒", "🏑", "🏏", "⛳", "🏹", "🎣", "🤿", "🥊", "🥋"
-]
-EMOJI_OBJECTS = [
+    "🥅", "🏒", "🏑", "🏏", "⛳", "🏹", "🎣", "🤿", "🥊", "🥋",
     "⌚", "📱", "💻", "🖨️", "🕹️", "🎮", "📷", "📸", "📹", "🎥",
-    "📺", "📻", "🎙️", "🎚️", "🎛️", "☎️", "📞", "📟", "📠", "🔋"
-]
-EMOJI_PLACES = [
+    "📺", "📻", "🎙️", "🎚️", "🎛️", "☎️", "📞", "📟", "📠", "🔋",
     "🚗", "🚕", "🚙", "🚌", "🚎", "🏎️", "🚓", "🚑", "🚒", "🚐",
     "🛻", "🚚", "🚛", "🚜", "🏍️", "🛵", "🚲", "🛴", "🚨", "🚔"
 ]
 
-ANDROID_EMOJI_POOL = (
-    EMOJI_ANIMALS_NATURE +
-    EMOJI_FOOD_DRINK +
-    EMOJI_ACTIVITY +
-    EMOJI_OBJECTS +
-    EMOJI_PLACES
-)
-
-# Regex pattern for emoji (wide, but not perfect!)
+# Regex pattern for emoji (cover most cases, including ZWJ sequences)
 EMOJI_REGEX = re.compile(
-    "["
-    "\U0001F300-\U0001F5FF"
-    "\U0001F600-\U0001F64F"
-    "\U0001F680-\U0001F6FF"
-    "\U0001F700-\U0001F77F"
-    "\U0001F780-\U0001F7FF"
-    "\U0001F800-\U0001F8FF"
-    "\U0001F900-\U0001F9FF"
-    "\U0001FA00-\U0001FA6F"
-    "\U0001FA70-\U0001FAFF"
-    "\U00002702-\U000027B0"
-    "\U000024C2-\U0001F251"
-    "]+", flags=re.UNICODE
+    r"("
+    r"(?:[\U0001F3FB-\U0001F3FF])|"  # skin tone
+    r"(?:[\U0001F9B0-\U0001F9B3])|"  # hair
+    r"(?:[\U0001F1E6-\U0001F1FF]{2})|"  # flags
+    r"(?:[\U0001F600-\U0001F64F])|"
+    r"(?:[\U0001F300-\U0001F5FF])|"
+    r"(?:[\U0001F680-\U0001F6FF])|"
+    r"(?:[\U0001F700-\U0001F77F])|"
+    r"(?:[\U0001F780-\U0001F7FF])|"
+    r"(?:[\U0001F800-\U0001F8FF])|"
+    r"(?:[\U0001F900-\U0001F9FF])|"
+    r"(?:[\U0001FA00-\U0001FA6F])|"
+    r"(?:[\U0001FA70-\U0001FAFF])|"
+    r"(?:[\u2600-\u26FF])|"
+    r"(?:[\u2700-\u27BF])|"
+    r"(?:[\u2300-\u23FF])|"
+    r"(?:[\u2B05-\u2B07])|"
+    r"(?:\u200D)"  # zwj joiner
+    r")+",
+    re.UNICODE
 )
 
 SUPPORTED_EXTS = (".json", ".txt", ".md", ".csv", ".xml", ".html", ".htm")
 
-def extract_emojis(text: str) -> List[str]:
-    return EMOJI_REGEX.findall(text)
+def extract_emojis(text):
+    # Find all emoji/sequence, keeping order, including duplicates
+    return [m.group(0) for m in EMOJI_REGEX.finditer(text)]
 
-def build_emoji_map(original_emojis: List[str], emoji_pool: List[str]) -> dict:
-    """
-    Map each original emoji (in order of appearance) to a replacement, cyclic by pool.
-    The mapping is 1-to-1 and only for those emojis that existed in the original file.
-    """
-    emoji_map = dict()
-    pool = deque(emoji_pool)
-    for emoji in original_emojis:
-        if emoji not in emoji_map:
-            new_emoji = pool.popleft()
-            emoji_map[emoji] = new_emoji
-            pool.append(new_emoji)
+def find_duplicates(emoji_list):
+    # Return a set of emojis that occur more than once
+    from collections import Counter
+    count = Counter(emoji_list)
+    return {em for em, c in count.items() if c > 1}
+
+def build_emoji_replace_map(emoji_list, emoji_pool):
+    # Only map duplicate emojis; unique ones stay unchanged
+    from collections import Counter, deque
+
+    counter = Counter(emoji_list)
+    dups = [em for em in emoji_list if counter[em] > 1]
+    seen = set()
+    dups_unique = []
+    for em in dups:
+        if em not in seen:
+            dups_unique.append(em)
+            seen.add(em)
+    pool = deque([e for e in emoji_pool if e not in emoji_list])  # don't use emojis already present
+    emoji_map = {}
+    for em in dups_unique:
+        if not pool:
+            pool = deque([e for e in emoji_pool if e not in emoji_list])
+        if pool:
+            emoji_map[em] = pool.popleft()
     return emoji_map
 
-def replace_emojis(text: str, emoji_map: dict) -> str:
-    # Only replace emojis that exist in the original, keep positions unchanged.
-    def replace_fn(match):
-        emoji = match.group(0)
-        return emoji_map.get(emoji, emoji)
-    return EMOJI_REGEX.sub(replace_fn, text)
+def replace_duplicate_emojis(text, emoji_map):
+    # Only replace duplicates (the 2nd, 3rd, ...) occurrence for each
+    # First occurrence stays, others replaced
+    matches = list(EMOJI_REGEX.finditer(text))
+    new_text = []
+    last_idx = 0
+    seen = {}
+    for m in matches:
+        em = m.group(0)
+        new_text.append(text[last_idx:m.start()])
+        seen.setdefault(em, 0)
+        seen[em] += 1
+        if em in emoji_map and seen[em] > 1:
+            new_text.append(emoji_map[em])
+        else:
+            new_text.append(em)
+        last_idx = m.end()
+    new_text.append(text[last_idx:])
+    return ''.join(new_text)
 
-def get_emojis_in_order(text: str) -> List[str]:
-    # Keep duplicates and order of appearance, only unique in mapping
-    seen = set()
-    ordered = []
-    for em in EMOJI_REGEX.findall(text):
-        if em not in seen:
-            ordered.append(em)
-            seen.add(em)
-    return ordered
-
-def load_file(filepath: str) -> str:
-    with open(filepath, "r", encoding="utf-8") as f:
-        return f.read()
-
-def save_file(filepath: str, content: str):
-    with open(filepath, "w", encoding="utf-8") as f:
-        f.write(content)
-
-def process_json_file(src: str, dst: str, emoji_map: dict):
+def process_json_file(src, dst, emoji_map):
     with open(src, "r", encoding="utf-8") as f:
         data = json.load(f)
     def recursive_replace(obj):
         if isinstance(obj, str):
-            return replace_emojis(obj, emoji_map)
+            return replace_duplicate_emojis(obj, emoji_map)
         elif isinstance(obj, list):
             return [recursive_replace(item) for item in obj]
         elif isinstance(obj, dict):
@@ -113,33 +111,35 @@ def process_json_file(src: str, dst: str, emoji_map: dict):
     with open(dst, "w", encoding="utf-8") as f:
         json.dump(new_data, f, ensure_ascii=False, indent=2)
 
-def process_csv_file(src: str, dst: str, emoji_map: dict):
+def process_csv_file(src, dst, emoji_map):
     with open(src, "r", encoding="utf-8", newline='') as f:
         reader = list(csv.reader(f))
     new_rows = []
     for row in reader:
-        new_row = [replace_emojis(cell, emoji_map) for cell in row]
+        new_row = [replace_duplicate_emojis(cell, emoji_map) for cell in row]
         new_rows.append(new_row)
     with open(dst, "w", encoding="utf-8", newline='') as f:
         writer = csv.writer(f)
         writer.writerows(new_rows)
 
-def process_txt_file(src: str, dst: str, emoji_map: dict):
-    text = load_file(src)
-    new_text = replace_emojis(text, emoji_map)
-    save_file(dst, new_text)
+def process_txt_file(src, dst, emoji_map):
+    with open(src, "r", encoding="utf-8") as f:
+        text = f.read()
+    new_text = replace_duplicate_emojis(text, emoji_map)
+    with open(dst, "w", encoding="utf-8") as f:
+        f.write(new_text)
 
-def process_md_file(src: str, dst: str, emoji_map: dict):
+def process_md_file(src, dst, emoji_map):
     process_txt_file(src, dst, emoji_map)
 
-def process_xml_file(src: str, dst: str, emoji_map: dict):
+def process_xml_file(src, dst, emoji_map):
     tree = ET.parse(src)
     root = tree.getroot()
     def recursive_xml(elem):
         if elem.text:
-            elem.text = replace_emojis(elem.text, emoji_map)
+            elem.text = replace_duplicate_emojis(elem.text, emoji_map)
         if elem.tail:
-            elem.tail = replace_emojis(elem.tail, emoji_map)
+            elem.tail = replace_duplicate_emojis(elem.tail, emoji_map)
         for child in elem:
             recursive_xml(child)
     recursive_xml(root)
@@ -156,7 +156,7 @@ class MyHTMLParser(HTMLParser):
     def handle_endtag(self, tag):
         self.result.append(f"</{tag}>")
     def handle_data(self, data):
-        self.result.append(replace_emojis(data, self.emoji_map))
+        self.result.append(replace_duplicate_emojis(data, self.emoji_map))
     def handle_entityref(self, name):
         self.result.append(f"&{name};")
     def handle_charref(self, name):
@@ -164,11 +164,13 @@ class MyHTMLParser(HTMLParser):
     def get_html(self):
         return "".join(self.result)
 
-def process_html_file(src: str, dst: str, emoji_map: dict):
-    text = load_file(src)
+def process_html_file(src, dst, emoji_map):
+    with open(src, "r", encoding="utf-8") as f:
+        text = f.read()
     parser = MyHTMLParser(emoji_map)
     parser.feed(text)
-    save_file(dst, parser.get_html())
+    with open(dst, "w", encoding="utf-8") as f:
+        f.write(parser.get_html())
 
 def main():
     src_dir = os.path.join(os.path.dirname(__file__))
@@ -182,13 +184,13 @@ def main():
         src_path = os.path.join(src_dir, filename)
         dst_path = os.path.join(output_dir, filename)
         print(f"Processing {filename}")
-        # Extract all emojis in file, in order
-        text = load_file(src_path)
-        original_emojis = get_emojis_in_order(text)
-        if not original_emojis:
+        with open(src_path, "r", encoding="utf-8") as f:
+            text = f.read()
+        emoji_list = extract_emojis(text)
+        if not emoji_list:
             print(f"  No emojis found in {filename}, skip.")
             continue
-        emoji_map = build_emoji_map(original_emojis, ANDROID_EMOJI_POOL)
+        emoji_map = build_emoji_replace_map(emoji_list, EMOJI_POOL)
         ext = os.path.splitext(filename)[-1].lower()
         if ext == ".json":
             process_json_file(src_path, dst_path, emoji_map)
