@@ -12956,10 +12956,10 @@ CCTV4中文国际,https://www.freetv.top/migu/608807419.m3u8?migutoken=6a212f7bb
 CCTV4中文国际,https://www.freetv.top/migu/608807416.m3u8?migutoken=85c9fb128ac91587cf67086436bd4af8631774375811d0d14ba7158ffb2f56b528e7e92a2da4c2f8bd757394265b58efcbccdce316306a1dae700620a73e52c2ab049d8bd223c049567a8c10bf
 CCTV4中文国际,https://www.freetv.top/migu/608807416.m3u8?migutoken=94d24df192f212e52d7c222dfab7df5ce4aad53db2766a6c4275a4c1e796cf13fb231906f792af9bc717ce1ccafa62165ebdc66b02fb0882cd5beac443921d36883a491d2b549a5509d63534e1
 CCTV4中文国际,http://www.freetv.top/migu/631780421.m3u8?migutoken=7acf39385ea80b0efa77b918418fcf998d00455e8b98e02dff92961440d989e3b7da00ef24731d327c410f2ef9ceb51e2137c20b2b606646542ce4643521747bf78b7533b3ec604bba63ffdf43
-CCTV4中文国际,http://183.11.239.36:808/hls/22/index.m3u8
-CCTV4中文国际,http://183.11.239.36:808/hls/77/index.m3u8
-CCTV4中文国际,http://nas.hssvm.com:8888/udp/225.1.1.150:5002
-CCTV4中文国际,http://112.123.243.37:50085/tsfile/live/0004_1.m3u8?key=txiptv&playlive=0&authid=0
+CCTV4中文国际,http://183.11.239.36:808/hls/67/index.m3u8
+CCTV4中文国际,http://112.46.85.60:8009/hls/4/index.m3u8
+CCTV4中文国际,https://piccpndali.v.myalicdn.com/audio/cctv4_2.m3u8
+CCTV4中文国际,http://111.9.163.109:9901/tsfile/live/0004_1.m3u8
 CCTV4中文国际,https://www.freetv.top/migu/631780421.m3u8?migutoken=fefc6a44400a0dd448699ae0ce3d6e2c5a0f49b8d48adb36e747c4fbab039337eb3244f9951acbddaf26b7bf51597a7d1b43c8845e67fd5914ece875dcad325bb388200bc0f12fdff727d03e2d
 CCTV4中文国际,http://61.138.128.226:19901/tsfile/live/0004_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV4中文国际,https://api.olelive.com/dis/live/CCTV4HD/hls.m3u8
