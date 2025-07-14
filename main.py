@@ -583,7 +583,7 @@ utc_time = datetime.now(timezone.utc)
 beijing_time = utc_time + timedelta(hours=8)
 # 格式化为所需的格式
 formatted_time = beijing_time.strftime("%Y%m%d %H:%M")
-version = formatted_time + ",https://gcalic.v.myalicdn.com/gc/wgw05_1/index.m3u8?contentid=2820180516001"
+version = formatted_time + ",https://gh.tryxd.cn/https://raw.githubusercontent.com/alantang1977/X/main/Pictures/Robot.mp4"
 
 # 瘦身版
 all_lines_simple = ["更新时间,#genre#"] + [version] + ['\n'] + \
