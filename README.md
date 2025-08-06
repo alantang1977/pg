@@ -44,40 +44,6 @@ https://tool.hiofd.com/file-md5-online/
 
 ![IMG_0113](https://github.com/alantang1977/pg/assets/107459091/a69f166c-07c8-4159-b442-bcf93983938c)
 
-## 本地部署GitHub
---------
-安装 Git
-检查是否已安装：命令行CMD输入 git --version 查看版本
-
-不同操作系统的安装方式不同：
-
-Windows：从 Git 官方网站 下载安装程序，按照提示完成安装。
-macOS：可以使用 Homebrew 进行安装，在终端输入 brew install git；也可以从官方网站下载安装程序。
-Linux：以 Ubuntu 为例，在终端输入 sudo apt-get install git 进行安装。
-配置 Git
-安装完成后，需要配置你的用户名和邮箱，这会在每次提交时显示。在终端执行以下命令：
-
-git config --global user.name "alantang1977"
-
-git config --global user.email "alanchao@163.com"
-
-在安装完 Git 后配置的用户名和邮箱，是与你在版本控制操作中身份标识相关的信息，它们主要用于以下用途：
-
-创建项目文件夹
-打开终端或命令提示符，使用 mkdir 命令创建一个新的文件夹作为你的项目目录，例如：
-
-然后使用cd命令进入该文件夹：
-
-mkdir my_project
-cd my_project
-创建代码文件
-在项目文件夹中创建代码文件，例如使用文本编辑器创建一个简单的 Python 文件 main.py，并添加一些代码内容：
-
-print("Hello, GitHub!")
-
-git remote add origin 仓库地址
-
-ssh-keygen -t rsa -b 4096 -C "????????邮箱"
 
 ---------
 ![photo_2024-04-09_06-39-11](https://github.com/alantang1977/pg/assets/107459091/738ccf7a-9900-44f1-8bbc-2dfb8acff704)
