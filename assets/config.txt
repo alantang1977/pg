@@ -7,7 +7,7 @@ http://wx.thego.cn/backup.m3u
 https://smart.pendy.dpdns.org/m3u/merged_judy.m3u
 https://smart.pendy.dpdns.org/m3u/Smart.m3u
 https://smart.pendy.dpdns.org/m3u/iptv-gongyi.m3u
-https://gh.tryxd.cn/https://raw.githubusercontent.com/lbxxxtw2/clash/refs/heads/main/new.txt
+https://gh.catmak.name/https://raw.githubusercontent.com/bxxxtw2/clash/refs/heads/main/new.txt
 https://yun.urldwz.com/f/Q6y3ca/migu.m3u
 https://cccimg.com/down.php/bff36da26c7fa82e6943f3f55014cb80.txt
 http://ys.my.to/i/?T=ydyw
@@ -42,7 +42,7 @@ https://xcz.funly.us/live.txt
 https://gh.tryxd.cn/https://raw.githubusercontent.com/yuanzl77/IPTV/main/live.txt
 https://gh.tryxd.cn/https://raw.githubusercontent.com/Wirili/IPTV/main/live.txt
 https://gh.tryxd.cn/https://raw.githubusercontent.com/qq49371114/collect-tv-txt/ec97c7ebf5b20965760b59b6a9a6818b82d008a2/live.txt
-https://gh.tryxd.cn/https://raw.githubusercontent.com/lc529180405/caicai/8be46d9e0b399ba0ddc1b7832b3bd7a236b3c159/极视解密.txt
+https://gh.catmak.name/https://raw.githubusercontent.com/c529180405/caicai/8be46d9e0b399ba0ddc1b7832b3bd7a236b3c159/极视解密.txt
 https://gh.tryxd.cn/https://raw.githubusercontent.com/suxuang/myIPTV/main/ipv6.m3u
 https://gh.tryxd.cn/https://raw.githubusercontent.com/iptv-js/iptv-js.github.io/main/ss_itv.m3u
 https://gh.tryxd.cn/https://raw.githubusercontent.com/250992941/iptv/main/st1.txt
@@ -51,7 +51,7 @@ https://gh.tryxd.cn/https://raw.githubusercontent.com/kimwang1978/collect-tv-txt
 https://gh.tryxd.cn/https://raw.githubusercontent.com/kimwang1978/collect-tv-txt/main/others_output.txt
 https://gh.tryxd.cn/https://raw.githubusercontent.com/alonezou/yn-iptv/main/reference/MyIPTV
 https://gh.tryxd.cn/https://raw.githubusercontent.com/qist/tvbox/master/tvlive.txt
-https://gh.tryxd.cn/https://raw.githubusercontent.com/leyan1987/iptv/main/iptvnew.txt
+https://gh.catmak.name/https://raw.githubusercontent.com/eyan1987/iptv/main/iptvnew.txt
 https://gh.tryxd.cn/https://raw.githubusercontent.com/maitel2020/iptv-self-use/main/iptv.txt
 https://gh.tryxd.cn/https://raw.githubusercontent.com/zwc456baby/iptv_alive/master/live.txt
 https://gh.tryxd.cn/https://raw.githubusercontent.com/wwb521/live/main/tv.m3u
