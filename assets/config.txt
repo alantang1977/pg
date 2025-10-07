@@ -1,3 +1,5 @@
+https://php.946985.filegear-sg.me/jackTV.m3u
+http://itv.0855.run:9088/resources/json/live_interface.txt
 http://is.is-great.org/ii/1749383140.txt
 http://go8.myartsonline.com/zx/0/iptv.txt
 http://wx.thego.cn/df.txt
