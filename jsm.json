@@ -11,6 +11,7 @@
 			"indexs":1,
 			"ext": "./lib/tokenm.json$$$./lib/douban.json"
 		},
+		{"key": "夸克在前","name": "🚗┃剧透社┃影视","type": 3,"api": "./py/剧透社[盘]_夸克在前.py","searchable": 1,"quickSearch": 0,"filterable": 0,"changeable": 0},
 		{"key":"TGDouban","name":"TG豆瓣","type":3,"api":"csp_TGDouban","timeout":120, 
 			"ext":{
 				"token":"./lib/tokenm.json",
