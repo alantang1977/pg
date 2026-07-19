@@ -37,127 +37,79 @@ blacklist_auto = read_blacklist_from_txt('assets/whitelist-blacklist/blacklist_a
 blacklist_manual = read_blacklist_from_txt('assets/whitelist-blacklist/blacklist_manual.txt')
 combined_blacklist = set(blacklist_auto + blacklist_manual)  # list是个列表，set是个集合，据说检索速度集合要快很多。2024-08-08
 
-# 定义多个对象用于存储不同内容的行文本
-# 主频道
-ys_lines = []  # 央视频道
-ws_lines = []  # 卫视频道
-ty_lines = []  # 体育频道
-dy_lines = []  # 电影频道
-dsj_lines = []  # 电视剧频道
-gat_lines = []  # 港澳台
-gj_lines = []  # 国际台
-jlp_lines = []  # 记录片
-xq_lines = []  # 戏曲
-js_lines = []  # 解说
-newtv_lines = []  # NewTV
-ihot_lines = []  # iHot
-et_lines = []  # 儿童
-zy_lines = []  # 综艺频道
-mdd_lines = []  # 埋堆堆
-yy_lines = []  # 音乐频道
-game_lines = []  # 游戏频道
-radio_lines = []  # 收音机频道
-zb_lines = []  # 直播中国
-cw_lines = []  # 春晚
-mtv_lines = []  # MTV
-migu_lines = []  # 咪咕直播
+whitelist_lines = read_txt_to_array('assets/whitelist-blacklist/whitelist_manual.txt')
+whitelist_auto_lines = read_txt_to_array('assets/whitelist-blacklist/whitelist_auto.txt')
 
-# 地方台
-sh_lines = []  # 地方台-上海频道
-zj_lines = []  # 地方台-浙江频道
-jsu_lines = []  # 地方台-江苏频道
-gd_lines = []  # 地方台-广东频道
-hn_lines = []  # 地方台-湖南频道
-ah_lines = []  # 地方台-安徽频道
-hain_lines = []  # 地方台-海南频道
-nm_lines = []  # 地方台-内蒙频道
-hb_lines = []  # 地方台-湖北频道
-ln_lines = []  # 地方台-辽宁频道
-sx_lines = []  # 地方台-陕西频道
-shanxi_lines = []  # 地方台-山西频道
-shandong_lines = []  # 地方台-山东频道
-yunnan_lines = []  # 地方台-云南频道
-bj_lines = []  # 地方台-北京频道
-cq_lines = []  # 地方台-重庆频道
-fj_lines = []  # 地方台-福建频道
-gs_lines = []  # 地方台-甘肃频道
-gx_lines = []  # 地方台-广西频道
-gz_lines = []  # 地方台-贵州频道
-heb_lines = []  # 地方台-河北频道
-hen_lines = []  # 地方台-河南频道
-hlj_lines = []  # 地方台-黑龙江频道
-jl_lines = []  # 地方台-吉林频道
-jx_lines = []  # 地方台-江西频道
-nx_lines = []  # 地方台-宁夏频道
-qh_lines = []  # 地方台-青海频道
-sc_lines = []  # 地方台-四川频道
-tj_lines = []  # 地方台-天津频道
-xj_lines = []  # 地方台-新疆频道
+CHANNEL_CONFIG = [
+    ('ys', '央视频道', '主频道/央视频道.txt', True),
+    ('ws', '卫视频道', '主频道/卫视频道.txt', True),
+    ('ty', '体育频道', '主频道/体育频道.txt', True),
+    ('dy', '电影频道', '主频道/电影.txt', True),
+    ('dsj', '电视剧频道', '主频道/电视剧.txt', True),
+    ('gat', '港澳台', '主频道/港澳台.txt', True),
+    ('gj', '国际台', '主频道/国际台.txt', True),
+    ('jlp', '纪录片', '主频道/纪录片.txt', True),
+    ('xq', '戏曲频道', '主频道/戏曲频道.txt', True),
+    ('js', '解说频道', '主频道/解说频道.txt', False),
+    ('cw', '春晚', '主频道/春晚.txt', True),
+    ('newtv', 'NewTV', '主频道/NewTV.txt', True),
+    ('ihot', 'iHOT', '主频道/iHOT.txt', True),
+    ('et', '儿童', '主频道/儿童频道.txt', True),
+    ('zy', '综艺频道', '主频道/综艺频道.txt', True),
+    ('mdd', '埋堆堆', '主频道/埋堆堆.txt', True),
+    ('yy', '音乐频道', '主频道/音乐频道.txt', False),
+    ('game', '游戏频道', '主频道/游戏频道.txt', False),
+    ('radio', '收音机频道', '主频道/收音机频道.txt', True),
+    ('zb', '直播中国', '主频道/直播中国.txt', False),
+    ('mtv', 'MTV', '主频道/MTV.txt', False),
+    ('migu', '咪咕直播', '主频道/咪咕直播.txt', True),
+    ('sh', '上海频道', '地方台/上海频道.txt', True),
+    ('zj', '浙江频道', '地方台/浙江频道.txt', True),
+    ('jsu', '江苏频道', '地方台/江苏频道.txt', False),
+    ('gd', '广东频道', '地方台/广东频道.txt', True),
+    ('hn', '湖南频道', '地方台/湖南频道.txt', True),
+    ('ah', '安徽频道', '地方台/安徽频道.txt', False),
+    ('hain', '海南频道', '地方台/海南频道.txt', False),
+    ('nm', '内蒙频道', '地方台/内蒙频道.txt', False),
+    ('hb', '湖北频道', '地方台/湖北频道.txt', True),
+    ('ln', '辽宁频道', '地方台/辽宁频道.txt', False),
+    ('sx', '陕西频道', '地方台/陕西频道.txt', False),
+    ('shanxi', '山西频道', '地方台/山西频道.txt', False),
+    ('shandong', '山东频道', '地方台/山东频道.txt', True),
+    ('yunnan', '云南频道', '地方台/云南频道.txt', False),
+    ('bj', '北京频道', '地方台/北京频道.txt', False),
+    ('cq', '重庆频道', '地方台/重庆频道.txt', False),
+    ('fj', '福建频道', '地方台/福建频道.txt', False),
+    ('gs', '甘肃频道', '地方台/甘肃频道.txt', False),
+    ('gx', '广西频道', '地方台/广西频道.txt', False),
+    ('gz', '贵州频道', '地方台/贵州频道.txt', False),
+    ('heb', '河北频道', '地方台/河北频道.txt', False),
+    ('hen', '河南频道', '地方台/河南频道.txt', False),
+    ('hlj', '黑龙江频道', '地方台/黑龙江频道.txt', False),
+    ('jl', '吉林频道', '地方台/吉林频道.txt', False),
+    ('jx', '江西频道', '地方台/江西频道.txt', False),
+    ('nx', '宁夏频道', '地方台/宁夏频道.txt', False),
+    ('qh', '青海频道', '地方台/青海频道.txt', False),
+    ('sc', '四川频道', '地方台/四川频道.txt', False),
+    ('tj', '天津频道', '地方台/天津频道.txt', False),
+    ('xj', '新疆频道', '地方台/新疆频道.txt', False),
+]
 
-other_lines = []  # 其他
-other_lines_url = []  # 为降低other文件大小，剔除重复url添加
+channel_lines = {key: [] for key, _, _, _ in CHANNEL_CONFIG}
+channel_dictionaries = {}
+for key, _, filepath, _ in CHANNEL_CONFIG:
+    channel_dictionaries[key] = read_txt_to_array(filepath)
 
-whitelist_lines = read_txt_to_array('assets/whitelist-blacklist/whitelist_manual.txt')  # 白名单
-whitelist_auto_lines = read_txt_to_array('assets/whitelist-blacklist/whitelist_auto.txt')  # 白名单
+channel_dictionary_sets = {key: set(val) for key, val in channel_dictionaries.items()}
 
-# 读取文本
-# 主频道
-ys_dictionary = read_txt_to_array('主频道/央视频道.txt')
-ws_dictionary = read_txt_to_array('主频道/卫视频道.txt')
-ty_dictionary = read_txt_to_array('主频道/体育频道.txt')
-dy_dictionary = read_txt_to_array('主频道/电影.txt')
-dsj_dictionary = read_txt_to_array('主频道/电视剧.txt')
-gat_dictionary = read_txt_to_array('主频道/港澳台.txt')
-gj_dictionary = read_txt_to_array('主频道/国际台.txt')
-jlp_dictionary = read_txt_to_array('主频道/纪录片.txt')
-xq_dictionary = read_txt_to_array('主频道/戏曲频道.txt')
-js_dictionary = read_txt_to_array('主频道/解说频道.txt')
-cw_dictionary = read_txt_to_array('主频道/春晚.txt')
-newtv_dictionary = read_txt_to_array('主频道/NewTV.txt')
-ihot_dictionary = read_txt_to_array('主频道/iHOT.txt')
-et_dictionary = read_txt_to_array('主频道/儿童频道.txt')
-zy_dictionary = read_txt_to_array('主频道/综艺频道.txt')
-mdd_dictionary = read_txt_to_array('主频道/埋堆堆.txt')
-yy_dictionary = read_txt_to_array('主频道/音乐频道.txt')
-game_dictionary = read_txt_to_array('主频道/游戏频道.txt')
-radio_dictionary = read_txt_to_array('主频道/收音机频道.txt')
-zb_dictionary = read_txt_to_array('主频道/直播中国.txt')
-mtv_dictionary = read_txt_to_array('主频道/MTV.txt')
-migu_dictionary = read_txt_to_array('主频道/咪咕直播.txt')
+for key, val in channel_lines.items():
+    globals()[f'{key}_lines'] = val
+for key, val in channel_dictionaries.items():
+    globals()[f'{key}_dictionary'] = val
 
-# 地方台
-sh_dictionary = read_txt_to_array('地方台/上海频道.txt')
-zj_dictionary = read_txt_to_array('地方台/浙江频道.txt')
-jsu_dictionary = read_txt_to_array('地方台/江苏频道.txt')
-gd_dictionary = read_txt_to_array('地方台/广东频道.txt')
-hn_dictionary = read_txt_to_array('地方台/湖南频道.txt')
-ah_dictionary = read_txt_to_array('地方台/安徽频道.txt')
-hain_dictionary = read_txt_to_array('地方台/海南频道.txt')
-nm_dictionary = read_txt_to_array('地方台/内蒙频道.txt')
-hb_dictionary = read_txt_to_array('地方台/湖北频道.txt')
-ln_dictionary = read_txt_to_array('地方台/辽宁频道.txt')
-sx_dictionary = read_txt_to_array('地方台/陕西频道.txt')
-shanxi_dictionary = read_txt_to_array('地方台/山西频道.txt')
-shandong_dictionary = read_txt_to_array('地方台/山东频道.txt')
-yunnan_dictionary = read_txt_to_array('地方台/云南频道.txt')
-bj_dictionary = read_txt_to_array('地方台/北京频道.txt')
-cq_dictionary = read_txt_to_array('地方台/重庆频道.txt')
-fj_dictionary = read_txt_to_array('地方台/福建频道.txt')
-gs_dictionary = read_txt_to_array('地方台/甘肃频道.txt')
-gx_dictionary = read_txt_to_array('地方台/广西频道.txt')
-gz_dictionary = read_txt_to_array('地方台/贵州频道.txt')
-heb_dictionary = read_txt_to_array('地方台/河北频道.txt')
-hen_dictionary = read_txt_to_array('地方台/河南频道.txt')
-hlj_dictionary = read_txt_to_array('地方台/黑龙江频道.txt')
-jl_dictionary = read_txt_to_array('地方台/吉林频道.txt')
-jx_dictionary = read_txt_to_array('地方台/江西频道.txt')
-nx_dictionary = read_txt_to_array('地方台/宁夏频道.txt')
-qh_dictionary = read_txt_to_array('地方台/青海频道.txt')
-sc_dictionary = read_txt_to_array('地方台/四川频道.txt')
-tj_dictionary = read_txt_to_array('地方台/天津频道.txt')
-xj_dictionary = read_txt_to_array('地方台/新疆频道.txt')
+other_lines = []
+other_lines_url = []
 
-# 自定义源
 urls = read_txt_to_array('assets/urls.txt')
 
 # 简繁转换
