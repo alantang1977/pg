@@ -2,7 +2,7 @@ name: 'WhiteList BlackList'
 
 on:
   schedule:
-    - cron: '0 20 * * *' # UTC
+    - cron: '0 16 * * 4'
   workflow_dispatch:
 
 jobs:
@@ -10,12 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.12'
 
       - name: Install dependencies
         run: |
@@ -28,11 +28,12 @@ jobs:
       - name: Commit changes
         run: |
           git config --local user.email "actions@github.com"
-          git config --local user.name "github_actions[bot]"
+          git config --local user.name "github-actions[bot]"
           git add ./assets/whitelist-blacklist/*
-          git commit -m "黑白名单 AutoUpdate $(date +'%Y%m%d')"
+          git diff --staged --quiet || git commit -m "黑白名单 AutoUpdate $(date +'%Y%m%d')"
 
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}

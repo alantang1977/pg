@@ -314,7 +314,7 @@ def split_url(lines):
             for url in url_list:
                 if "://" in url: 
                     newline=f'{channel_name},{url}'
-                    newlines.append(line)
+                    newlines.append(newline)
     return newlines
 
 # 取得host
