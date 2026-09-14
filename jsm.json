@@ -1,5 +1,5 @@
 {
-"spider": "./jar/pg.jar",
+"spider": "./pg.jar",
 "wallpaper": "http://饭太硬.top/深色壁纸/api.php",
 "sites": [
 {"key":"豆瓣","name":"豆瓣","type":3,"api":"csp_Douban","searchable":0,"changeable":1,"indexs":1,"ext":"./lib/tokenm.json$$$./lib/douban.json"},
